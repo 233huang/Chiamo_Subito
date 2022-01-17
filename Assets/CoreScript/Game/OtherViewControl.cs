@@ -1,38 +1,56 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
+/// <summary>
+/// 视角切换——相机/显示大物体
+/// </summary>
 public class OtherViewControl : MonoBehaviour
 {
-    public GameObject MainCamera;
-    public GameObject OtherCamera;
-    public GameObject LeaveBtn;
+    public GameObject MainCamera;//主相机
+    public GameObject OtherCamera;//第一视角相机
+    public GameObject LeaveBtn;//退出视角切换按钮
 
+    private GameObject show;
 
-    void Awake()
+    void Start()
     {
-        LeaveBtn = GameObject.Find("OtherView_RemoveBtn");
-        EventManger.instance.RemoveEventListener<Transform>("OtherView", OtherView);
-        EventManger.instance.AddEventListener<Transform>("OtherView", OtherView);
+        if(LeaveBtn==null)
+            LeaveBtn = GameObject.Find("OtherView_RemoveBtn");
 
-        EventManger.instance.RemoveEventListener("OtherView_RemoveBtn", RemoveBtn);
+        EventManger.instance.AddEventListener<GameObject>("OtherView", OtherView);
         EventManger.instance.AddEventListener("OtherView_RemoveBtn", RemoveBtn);
     }
 
-    void OtherView(Transform transform)
+    void OtherView(GameObject g)
     {
-        Debug.Log("测试2+"+ transform.position);
-        OtherCamera.transform.position = new Vector3( transform.position.x,transform.position.y,-1);
-        OtherCamera.SetActive(true);
-        MainCamera.SetActive(false);
+        if (g.GetComponent<OtherView_item>().show != null)
+        {
+            this.show = g.GetComponent<OtherView_item>().show;
+            show.SetActive(true);
+        }
+        else
+        {
+            OtherCamera.transform.position = new Vector3(g.transform.position.x, g.transform.position.y, -1);
+            OtherCamera.SetActive(true);
+            MainCamera.SetActive(false); 
+        }
         LeaveBtn.SetActive(true);
     }
 
     void RemoveBtn()
     {
-        Debug.Log("测试3");
-        MainCamera.SetActive(true);
-        OtherCamera.SetActive(false);
+        if (show != null)
+        {
+            show.SetActive(false);
+            show = null;
+        }
+        else
+        {
+            MainCamera.SetActive(true);
+            OtherCamera.SetActive(false);
+        }
         LeaveBtn.SetActive(false);
     }
 }

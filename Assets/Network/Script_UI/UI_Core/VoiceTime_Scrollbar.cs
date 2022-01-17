@@ -5,20 +5,16 @@ using UnityEngine.UI;
 
 public class VoiceTime_Scrollbar : MonoBehaviour
 {
-    [SerializeField]
     private GameObject voiceTime;
-    [SerializeField]
     private GameObject scrollbar;
-    [SerializeField]
     private Image image;
-
     private Scrollbar scr;
 
-    private bool isDecrease = false;
+    private bool isDecrease = false;//是否处于语音状态
 
-    private float maxtime = 0;
-    private float surplustime = 0;
-    // Start is called before the first frame update
+    private float maxtime = 0;//最大时间
+    private float surplustime = 0;//剩余时间
+    
     void Start()
     {
         voiceTime = this.gameObject;
@@ -26,8 +22,8 @@ public class VoiceTime_Scrollbar : MonoBehaviour
         image = voiceTime.transform.GetChild(1).GetComponent<Image>();
         scr = scrollbar.GetComponent<Scrollbar>();
 
-        EventManger.instance.AddEventListener("DecreaseTime", DecreaseTime);
-        EventManger.instance.AddEventListener<float>("VoiceTimeChance", VoiceTimeChance);
+        EventManger.instance.AddEventListener("DecreaseTime", DecreaseTime);//事件：开启/关闭语音
+        EventManger.instance.AddEventListener<float>("VoiceTimeChance", VoiceTimeChance);//事件：语音最大时长改变
     }
 
     void Update()
@@ -49,7 +45,6 @@ public class VoiceTime_Scrollbar : MonoBehaviour
     
     void VoiceTimeChance(float f)
     {
-        Debug.Log("数值改变了");
         maxtime = f;
         surplustime += f;
         image.enabled = true;

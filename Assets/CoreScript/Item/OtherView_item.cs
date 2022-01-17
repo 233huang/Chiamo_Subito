@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 展示某种物品事件、或切换第一视角
+/// </summary>
 public class OtherView_item : MonoBehaviour
 {
+    public GameObject show;
+
     bool enter=false;
     private void Update()
     {
@@ -11,8 +16,7 @@ public class OtherView_item : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
-                Debug.Log("测试1");
-                EventManger.instance.TriggerEventListener<Transform>("OtherView", this.transform);
+                EventManger.instance.TriggerEventListener<GameObject>("OtherView", this.gameObject);
             }
         }
     }

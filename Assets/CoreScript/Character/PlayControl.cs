@@ -22,8 +22,9 @@ namespace Com.MyCompany.MyGame
         private void Awake()
         {
             distortionFilter = this.transform.Find("Speaker").gameObject.GetComponent<AudioDistortionFilter>();
-            DontDestroyOnLoad(this.gameObject);
+            //DontDestroyOnLoad(this.gameObject);
             EventManger.instance.AddEventListener<float>("Distortion", Distortion);
+            EventManger.instance.AddEventListener("DeletePlayer", DestoryMyselft);
             animator = this.transform.Find("Sprite").GetComponent<Animator>();
 
             allowControl = new bool[10];
@@ -61,6 +62,15 @@ namespace Com.MyCompany.MyGame
                 EventManger.instance.TriggerEventListener("DecreaseTime");
             }
             #endregion
+        }
+
+        private void DestoryMyselft()
+        {
+            if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+            {
+                return;
+            }
+            Destroy(this);
         }
 
         private void Distortion(float f)

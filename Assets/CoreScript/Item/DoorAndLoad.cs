@@ -12,6 +12,7 @@ public class DoorAndLoad : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
+                Photon.Pun.PhotonNetwork.AutomaticallySyncScene = false;
                 SceneManager.LoadScene("Level1");
             }
         }
