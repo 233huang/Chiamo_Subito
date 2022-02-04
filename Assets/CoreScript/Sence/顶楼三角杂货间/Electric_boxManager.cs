@@ -23,29 +23,23 @@ public class Electric_boxManager : Singleton<Electric_boxManager>
         }
     }
 
-
-    private Stack<int> btnsort = new Stack<int>(new int[] { 2,1,6,3,5,4});//按钮的标准答案
-
-    private Stack<int> btn = new Stack<int>();//保存操作的按钮顺序
-
-
-    public void AddBtn(int n)
+    private bool modularTwo = false;//第二模块
+    public bool ModularTwo
     {
-        btn.Push(n);
-        if(btn.Count == 6)
+        get { return modularTwo; }
+        set
         {
-            if(btn == btnsort)
-                EventManger.instance.TriggerEventListener("Btn_Complete");
-            else
-            {
-                while (btn.Count != 0)
-                {
-                    btn.Pop();
-                }
-                EventManger.instance.TriggerEventListener("Btn_Fail");
-            }
+            modularTwo = value;
         }
     }
 
-
+    private bool modularThree = false;//第三模块
+    public bool ModularThree
+    {
+        get { return modularThree; }
+        set
+        {
+            modularThree = value;
+        }
+    }
 }

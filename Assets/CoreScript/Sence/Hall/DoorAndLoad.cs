@@ -13,7 +13,10 @@ public class DoorAndLoad : MonoBehaviour
             if (Input.GetKey(KeyCode.E))
             {
                 Photon.Pun.PhotonNetwork.AutomaticallySyncScene = false;
-                SceneManager.LoadScene("Level1");
+                if(PlayerManager.instance.CharacterID == 0)
+                    SceneManager.LoadScene("Level1");
+                if (PlayerManager.instance.CharacterID == 1)
+                    SceneManager.LoadScene("顶楼三角杂货间");
             }
         }
     }
