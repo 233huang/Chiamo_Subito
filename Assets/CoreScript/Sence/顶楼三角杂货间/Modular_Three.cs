@@ -27,6 +27,18 @@ public class Modular_Three : MonoBehaviour
                 }
             });
         }
+        SetToggleAble(false);
+        EventManger.instance.AddEventListener<bool>("Box_Work", SetToggleAble);
+    }
+
+    private void SetToggleAble(bool b)
+    {
+        if (!Electric_boxManager.instance.ModularTwo)
+            b = false;
+        foreach (Toggle toggle in toggles)
+        {
+            toggle.interactable = b;
+        }
     }
 
     public void AddBtn(int n)

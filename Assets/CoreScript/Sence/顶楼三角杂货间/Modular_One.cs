@@ -40,8 +40,18 @@ public class Modular_One : MonoBehaviour
         }
         Pointer[0] = this.transform.GetChild(4).gameObject;
         Pointer[1] = this.transform.GetChild(5).gameObject;
-
         ToggleInit();
+
+        SetToggleAble(false);
+        EventManger.instance.AddEventListener<bool>("Box_Work", SetToggleAble);
+    }
+
+    private void SetToggleAble(bool b)
+    {
+        foreach (Toggle toggle in toggles)
+        {
+            toggle.interactable = b;
+        }
     }
 
     private void ToggleInit()
