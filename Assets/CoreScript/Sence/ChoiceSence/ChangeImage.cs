@@ -17,7 +17,7 @@ public class ChangeImage : MonoBehaviour
     }
     public void chance(bool ischange)
     {
-         image.sprite = ischange? sprite:oldsprite;
+         image.sprite = ischange?sprite:oldsprite;
          child.GetComponent<SpriteRenderer>().enabled = ischange;
     }
 }

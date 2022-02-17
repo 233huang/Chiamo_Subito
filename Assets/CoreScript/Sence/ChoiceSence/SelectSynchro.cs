@@ -8,6 +8,10 @@ public class SelectSynchro :MonoBehaviourPunCallbacks
 {
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        EventManger.instance.TriggerEventListener<int>("choiceCharacter", PlayerManager.instance.CharacterID);
+        if (PlayerManager.instance.CharacterID == 0 || PlayerManager.instance.CharacterID == 1)
+        {
+            PlayerManager.instance.gameObject.GetComponent<PhotonView>().RPC("OtherPlayerChoice", RpcTarget.All, PlayerManager.instance.CharacterID);
+        }
     }
+
 }

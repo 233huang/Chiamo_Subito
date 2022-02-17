@@ -12,33 +12,22 @@ public class VoiceManger : MonoBehaviour
     private void Awake()
     {
         this.recorder = this.GetComponent<Recorder>();
-        Voice_Toggle();
+        VoiceInit();
         DontDestroyOnLoad(this.gameObject);
     }
 
-    private void Voice_Toggle()
+    private void VoiceInit()
     {
-        EventManger.instance.AddEventListener<bool>("Transmit_Toggle", Transmit);
-        EventManger.instance.AddEventListener<bool>("VoiceDetection_Toggle", VoiceDetection);
-        EventManger.instance.AddEventListener<float>("AddVoiceTime", AddVoiceTime);
+        EventManger.instance.AddEventListener<bool>("Transmit", Transmit,false);
+        EventManger.instance.AddEventListener<bool>("VoiceDetection", VoiceDetection);
     }
 
     private void Transmit(bool isOn)
     {
         this.recorder.TransmitEnabled = isOn;//控制传输功能开关
-        PlayVoiceManager.instance.Transmit = true;
     }
     private void VoiceDetection(bool isOn)
     {
         this.recorder.VoiceDetection = isOn;//启用或禁用语音检测功能
-        PlayVoiceManager.instance.Transmit = false;
-    }
-
-    private void AddVoiceTime(float f)
-    {
-        if (!PlayVoiceManager.instance.Transmit)
-            Transmit(true);
-        PlayVoiceManager.instance.VoiceTime += f;
-        Debug.Log("时间增加了：" + f);
     }
 }

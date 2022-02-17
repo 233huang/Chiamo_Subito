@@ -18,7 +18,6 @@ public class LoadHallSence : MonoBehaviour
     }
     private void LoadHall()
     {
-        //EventManger.instance.TriggerEventListener<int>("choiceCharacter", PlayerManager.instance.CharacterID);
         Photon.Pun.PhotonNetwork.LoadLevel("Hall");
 
     }

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 会触发动画的物体
+/// </summary>
 public class Animation_item : MonoBehaviour
 {
     private Animator animator;

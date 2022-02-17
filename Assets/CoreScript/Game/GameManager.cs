@@ -26,15 +26,14 @@ namespace Com.MyCompany.MyGame
         {
             if (PlayerManager.instance.CharacterID == 0)
             {
-                //GameObject player = PhotonNetwork.Instantiate("LiAng", new Vector3(3f, -3.8f, 1f), Quaternion.identity, 0);
-                GameObject player = PhotonNetwork.Instantiate("LiAng",tran, Quaternion.identity, 0);
+                Debug.Log("x");
+                GameObject player = PhotonNetwork.Instantiate("Player/LiAng",tran, Quaternion.identity, 0);
                 player.transform.localScale = size;
                 player.transform.SetParent(GameObject.Find("Game").transform);
             }
             if (PlayerManager.instance.CharacterID == 1)
             {
-                //GameObject player = PhotonNetwork.Instantiate("LiLiAn", new Vector3(-3f, -3.8f, 1f), Quaternion.identity, 0);
-                GameObject player = PhotonNetwork.Instantiate("LiLiAn", tran, Quaternion.identity, 0);
+                GameObject player = PhotonNetwork.Instantiate("Player/LiLiAn", tran, Quaternion.identity, 0);
                 player.transform.localScale = size;
                 player.transform.SetParent(GameObject.Find("Game").transform);
             }

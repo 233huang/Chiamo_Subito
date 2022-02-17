@@ -8,17 +8,15 @@ using UnityEngine;
 /// </summary>
 public class ChinarRayCast : MonoBehaviour
 {
-    private GameObject endObject = null;
     private bool isChoice=false;
-    private int otherPlayerChoice = -1;
     
-    public GameObject liang;
-    public GameObject lilian;
-
+    public ChangeImage liang;
+    public ChangeImage lilian;
 
     private void Start()
     {
-        EventManger.instance.AddEventListener<int>("choiceCharacter", synchro);
+        EventManger.instance.AddEventListener<int>("OtherPlayerChoice", OtherPlayerChoice);//有玩家选择人物后就执行该事件
+        OtherPlayerChoice(PlayerManager.instance.OtherCharacterID);
     }
 
     void Update()
@@ -26,72 +24,44 @@ public class ChinarRayCast : MonoBehaviour
         Vector3 ray = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
         RaycastHit2D hit;
         hit = Physics2D.Raycast(ray, Vector2.zero);
+
         if (hit.collider != null)
         {
-            if(hit.collider.name == "LiAng"&& otherPlayerChoice!=0)//且还没有其它玩家选择的时候
+            if(hit.collider.name == "LiAng")
             {
-                if (!isChoice)//是否已经处于选中状态
+                liang.chance(true);
+                if (PlayerManager.instance.OtherCharacterID != 1 && PlayerManager.instance.CharacterID !=1)
+                    lilian.chance(false);
+                if (Input.GetKeyDown(KeyCode.Return)&&PlayerManager.instance.OtherCharacterID!=0)
                 {
-                    if (otherPlayerChoice == -1)
-                        reduction();
-                    endObject = hit.collider.gameObject;
-                    endObject.GetComponent<ChangeImage>().chance(true);
-                }
-                if (Input.GetKeyDown(KeyCode.Return))
-                {
-                    if (otherPlayerChoice == -1)
-                        reduction();
-                    endObject = hit.collider.gameObject;
-                    endObject.GetComponent<ChangeImage>().chance(true);
                     PlayerManager.instance.CharacterID = 0;
-                    isChoice = true;
-                    synchro(0);
+                    PlayerManager.instance.gameObject.GetComponent<PhotonView>().RPC("OtherPlayerChoice", RpcTarget.All, 0);
                 }
             }
-            else if(hit.collider.name == "LiLiAn"&& otherPlayerChoice!=1)
+            if(hit.collider.name == "LiLiAn")
             {
-                if (!isChoice)
+                lilian.chance(true);
+                if (PlayerManager.instance.OtherCharacterID != 0 && PlayerManager.instance.CharacterID != 0)
+                    liang.chance(false);
+                if (Input.GetKeyDown(KeyCode.Return) && PlayerManager.instance.OtherCharacterID != 1)
                 {
-                    if (otherPlayerChoice == -1)
-                        reduction();
-                    endObject = hit.collider.gameObject;
-                    endObject.GetComponent<ChangeImage>().chance(true);
-                }
-                if (Input.GetKeyDown(KeyCode.Return))
-                {
-                    if (otherPlayerChoice == -1)
-                        reduction();
-                    endObject = hit.collider.gameObject;
-                    endObject.GetComponent<ChangeImage>().chance(true);
                     PlayerManager.instance.CharacterID = 1;
-                    isChoice = true;
-                    synchro(1);
+                    PlayerManager.instance.gameObject.GetComponent<PhotonView>().RPC("OtherPlayerChoice", RpcTarget.All, 1);
                 }
             }
         }
         else
         {
-            if(!isChoice)
-                reduction();
+            if (PlayerManager.instance.OtherCharacterID != 1 && PlayerManager.instance.CharacterID != 1)
+                lilian.chance(false);
+            if (PlayerManager.instance.OtherCharacterID != 0 && PlayerManager.instance.CharacterID != 0)
+                liang.chance(false);
         }
     }
-    void reduction()
-    {
-        if (endObject != null)
-            endObject.GetComponent<ChangeImage>().chance(false);
-    }
 
-    public void synchro(int id)
+    void OtherPlayerChoice(int id)
     {
-        GetComponent<PhotonView>().RPC("otherplayerchoice", RpcTarget.All, id);
-    }
-
-    [PunRPC]
-    void otherplayerchoice(int id)
-    {
-        Debug.Log("有其它玩家选择了角色");
-        otherPlayerChoice = id;
-        if(id == 0)
+        if (id == 0)
         {
             liang.GetComponent<ChangeImage>().chance(true);
         }

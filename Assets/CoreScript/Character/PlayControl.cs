@@ -22,8 +22,8 @@ namespace Com.MyCompany.MyGame
         private void Awake()
         {
             distortionFilter = this.transform.Find("Speaker").gameObject.GetComponent<AudioDistortionFilter>();
-            //DontDestroyOnLoad(this.gameObject);
             EventManger.instance.AddEventListener<float>("Distortion", Distortion);
+
             EventManger.instance.AddEventListener("DeletePlayer", DestoryMyselft);
             animator = this.transform.Find("Sprite").GetComponent<Animator>();
 
@@ -59,7 +59,7 @@ namespace Com.MyCompany.MyGame
             }
             if (Input.GetKey(KeyCode.Y))
             {
-                EventManger.instance.TriggerEventListener("DecreaseTime");
+                PlayVoiceManager.instance.SetTramsmit(!PlayVoiceManager.instance.Transmit);
             }
             #endregion
         }

@@ -6,13 +6,13 @@ public class Pickup_slice : MonoBehaviour
 {
     private void AddVoiceTime()
     {
-        Debug.Log("执行了");
         EventManger.instance.RemoveEventListener("pickup", AddVoiceTime);
-        EventManger.instance.TriggerEventListener<float>("AddVoiceTime", 120f);
+        PlayVoiceManager.instance.AddVoiceTime(120f);
         Destroy(this.gameObject);
     }
 
     //提示按“E”
+    //E键监听的第一种方式：添加pickup事件
     private void OnTriggerEnter2D(Collider2D collision)
     {
         transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = true;
