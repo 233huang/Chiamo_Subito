@@ -11,7 +11,7 @@ public class PlayerManager : MonoBehaviourPun
     private int _characterID = -1;
     public int CharacterID { get { return _characterID; } set { _characterID = value; } }
 
-    private int _otherCharacterID = -1;//与其说是Other，不如说是已经被选择的人物，这里有歧义
+    private int _otherCharacterID = -1;
     public int OtherCharacterID { 
         get {
             return _otherCharacterID;
@@ -22,17 +22,23 @@ public class PlayerManager : MonoBehaviourPun
         } 
     }
 
+    public bool[] alreadyChocieCharacter;
+
     public static PlayerManager instance = null;
     private void Awake()
     {
         instance = this;
         DontDestroyOnLoad(this);
     }
-
+    private void Start()
+    {
+        alreadyChocieCharacter = new bool[2] {false,false};
+    }
     [PunRPC]
     void OtherPlayerChoice(int id)
     {
         Debug.Log("有其它玩家选择了角色");
         OtherCharacterID = id;
+        //alreadyChocieCharacter[id] = true;
     }
 }

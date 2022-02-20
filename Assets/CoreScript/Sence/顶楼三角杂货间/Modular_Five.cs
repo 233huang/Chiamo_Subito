@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Modular_Five : MonoBehaviour
 {
     private Vector3 start;
-    private Vector3 target;
+    public GameObject target;
     public float speed;
     private bool Down = false;
     private bool Up = false;
@@ -13,7 +14,7 @@ public class Modular_Five : MonoBehaviour
     private void Start()
     {
         start = this.transform.position;
-        target = new Vector3(this.transform.position.x, this.transform.position.y - 100, this.transform.position.z);
+        //target = new Vector3(this.transform.position.x, this.transform.position.y - 50, this.transform.position.z);
     }
     public void PullDown()
     {
@@ -25,6 +26,7 @@ public class Modular_Five : MonoBehaviour
         }
         else
         {
+            Debug.Log("x");
             Electric_boxManager.instance.Work = false;
             Up = true;
             Down = true;
@@ -36,10 +38,10 @@ public class Modular_Five : MonoBehaviour
         if (Down)
         {
             if(!Up)
-                this.transform.position = Vector3.Lerp(this.transform.position, target, speed * Time.deltaTime);
+                this.transform.position = Vector3.Lerp(this.transform.position, target.transform.position, speed * Time.deltaTime);
             else
                 this.transform.position = Vector3.Lerp(this.transform.position, start, speed * Time.deltaTime);
-            if (this.transform.position == target)
+            if (this.transform.position == target.transform.position)
                 Down = false;
         }
     }

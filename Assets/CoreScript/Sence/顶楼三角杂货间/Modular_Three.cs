@@ -7,10 +7,7 @@ public class Modular_Three : MonoBehaviour
 {
     [SerializeField]
     private Toggle[] toggles = new Toggle[6];
-
-
     private int[] btnsort = new int[] { 2,1,6,3,5,4};//按钮的标准答案
-
     private Queue<int> btn = new Queue<int>();//保存操作的按钮顺序
 
     private void Start()
@@ -22,13 +19,12 @@ public class Modular_Three : MonoBehaviour
             toggles[i].onValueChanged.AddListener((b) => { 
                 if (b)
                 {
-                    Debug.Log(temp + 1);
                     AddBtn(temp+1);
                 }
             });
         }
         SetToggleAble(false);
-        EventManger.instance.AddEventListener<bool>("Box_Work", SetToggleAble);
+        EventManger.instance.AddEventListener<bool>("Box_Two", SetToggleAble);
     }
 
     private void SetToggleAble(bool b)

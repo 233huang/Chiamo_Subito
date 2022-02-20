@@ -113,6 +113,7 @@ public class Modular_One : MonoBehaviour
 
     private void JudgeComplete()
     {
+        Debug.Log("v：" + Voltage + "e:" + Electric);
         if(Voltage == 220 && Electric == 30)
         {
             Electric_boxManager.instance.ModularOne = true;

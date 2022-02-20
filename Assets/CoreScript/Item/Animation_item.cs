@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class Animation_item : MonoBehaviour
 {
+    public GameObject g;
     private Animator animator;
 
     bool enter = false;
@@ -23,7 +24,7 @@ public class Animation_item : MonoBehaviour
             if (Input.GetKey(KeyCode.E))
             {
                 animator.SetBool("run", true);
-            }
+            }  
         }
     }
 
@@ -36,5 +37,10 @@ public class Animation_item : MonoBehaviour
     {
         transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = false;
         enter = false;
+    }
+
+    private void Instantic()
+    {
+        g.SetActive(true);
     }
 }

@@ -31,7 +31,7 @@ public class Modular_Two : MonoBehaviour
             buttons[i].GetComponent<Image>().alphaHitTestMinimumThreshold = 0.5f;
         }
         BtnInit();
-        EventManger.instance.AddEventListener<bool>("Box_Work", SetToggleAble);
+        EventManger.instance.AddEventListener<bool>("Box_One", SetToggleAble);
         SetToggleAble(false);
     }
 
@@ -44,16 +44,6 @@ public class Modular_Two : MonoBehaviour
             button.GetComponent<Button>().interactable = b;
         }
     }
-    public void ChangeWire()
-    {
-        if (WireDic[1] == 2 && WireDic[2] == 4 && WireDic[3] == 3 && WireDic[4] == 1)
-        {
-            //缺一个图片替换
-
-            Electric_boxManager.instance.ModularTwo = true;
-        }
-    }
-
     /// <summary>
     /// 按钮监听初始化
     /// </summary>
@@ -118,5 +108,14 @@ public class Modular_Two : MonoBehaviour
         }
         ChangeWire();
         Wire_selected = -1;
+    }
+    public void ChangeWire()
+    {
+        if (WireDic[1] == 2 && WireDic[2] == 4 && WireDic[3] == 3 && WireDic[4] == 1)
+        {
+            //缺一个图片替换
+
+            Electric_boxManager.instance.ModularTwo = true;
+        }
     }
 }

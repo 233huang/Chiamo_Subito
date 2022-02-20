@@ -26,7 +26,6 @@ namespace Com.MyCompany.MyGame
         {
             if (PlayerManager.instance.CharacterID == 0)
             {
-                Debug.Log("x");
                 GameObject player = PhotonNetwork.Instantiate("Player/LiAng",tran, Quaternion.identity, 0);
                 player.transform.localScale = size;
                 player.transform.SetParent(GameObject.Find("Game").transform);

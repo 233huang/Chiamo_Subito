@@ -12,7 +12,6 @@ public class PlayVoiceManager : Singleton<PlayVoiceManager>
             EventManger.instance.TriggerEventListener("Transmit", value);
         } 
     }
-    //private float _maxvoicetime;
     public float MaxVoiceTime { get; set; }
 
     private float _voicetime;
@@ -23,23 +22,32 @@ public class PlayVoiceManager : Singleton<PlayVoiceManager>
         } 
     }
 
+    private int _vocieCount;
+    public int VoiceCount{ 
+        get { return _vocieCount; } 
+        set {
+
+            bool temp = _vocieCount > value ? false : true;
+            _vocieCount = value;
+            EventManger.instance.TriggerEventListener<bool>("SetVoiceCount",temp );
+           
+        } }
+
     public void SetTramsmit(bool b)
     {
-        if (VoiceTime > 0)
+        if (VoiceCount > 0)
         {
             Transmit = b;
         }
     }
 
-    public void AddVoiceTime(float f)
+    public void AddVoiceCount(int i)
     {
-        VoiceTime += f;
-        MaxVoiceTime = VoiceTime;
+        VoiceCount+=i;
     }
 
     public void SetVoiceTime(float f)
     {
         VoiceTime = f;
-        MaxVoiceTime = VoiceTime;
     }
 }

@@ -7,7 +7,7 @@ public class Pickup_slice : MonoBehaviour
     private void AddVoiceTime()
     {
         EventManger.instance.RemoveEventListener("pickup", AddVoiceTime);
-        PlayVoiceManager.instance.AddVoiceTime(120f);
+        PlayVoiceManager.instance.AddVoiceCount(1);
         Destroy(this.gameObject);
     }
 

@@ -11,7 +11,7 @@ namespace Com.MyCompany.MyGame
     public class PlayControl : MonoBehaviourPun
     {
         [SerializeField]
-        private float speed = 2.3f;
+        private float speed = 4f;
         [SerializeField]
         private AudioDistortionFilter distortionFilter;
         private AudioReverbFilter reverbFilter;
@@ -57,7 +57,7 @@ namespace Com.MyCompany.MyGame
             {
                 EventManger.instance.TriggerEventListener("pickup");
             }
-            if (Input.GetKey(KeyCode.Y))
+            if (Input.GetKeyDown(KeyCode.Y))
             {
                 PlayVoiceManager.instance.SetTramsmit(!PlayVoiceManager.instance.Transmit);
             }
