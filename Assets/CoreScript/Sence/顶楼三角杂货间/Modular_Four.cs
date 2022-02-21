@@ -16,11 +16,12 @@ public class Modular_Four : MonoBehaviour
             int temp = i;
             buttons[i].onClick.AddListener(() => { 
                 buttons[temp].transform.localEulerAngles = new Vector3(0.0f, 0.0f, buttons[temp].transform.localEulerAngles.z - 90);
+                CheckResult();
             });
         }
 
         SetButtonAble(false);
-        EventManger.instance.AddEventListener<bool>("Box_Work", SetButtonAble);
+        EventManger.instance.AddEventListener<bool>("Box_Three", SetButtonAble);
     }
 
     private void SetButtonAble(bool b)
@@ -32,6 +33,23 @@ public class Modular_Four : MonoBehaviour
             button.interactable = b;
         }
     }
+
+    private void CheckResult()
+    {
+        bool temp = true;
+        for(int i = 0; i <= 4; i++)
+        {
+            if (buttons[i].transform.localEulerAngles.z != 180)
+                temp = false;
+        }
+        if(temp)
+        {
+            Debug.Log("vvvv!");
+            //synchro();
+        }    
+          
+    }
+
 
     public void synchro()
     {

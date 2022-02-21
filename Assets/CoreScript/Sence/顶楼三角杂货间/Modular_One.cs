@@ -16,8 +16,8 @@ public class Modular_One : MonoBehaviour
         get { return voltage; }
         set
         {
-            JudgeComplete();
             voltage = value;
+            JudgeComplete();
         }
     }
 
@@ -27,8 +27,8 @@ public class Modular_One : MonoBehaviour
         get { return electric; }
         set
         {
-            JudgeComplete();
             electric = value;
+            JudgeComplete();
         }
     }
 
@@ -117,10 +117,6 @@ public class Modular_One : MonoBehaviour
         if(Voltage == 220 && Electric == 30)
         {
             Electric_boxManager.instance.ModularOne = true;
-        }
-        else
-        {
-            Electric_boxManager.instance.ModularOne = false;
         }
     }
 }

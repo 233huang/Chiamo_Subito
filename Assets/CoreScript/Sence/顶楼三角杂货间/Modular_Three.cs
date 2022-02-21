@@ -10,6 +10,10 @@ public class Modular_Three : MonoBehaviour
     private int[] btnsort = new int[] { 2,1,6,3,5,4};//按钮的标准答案
     private Queue<int> btn = new Queue<int>();//保存操作的按钮顺序
 
+    public Image a;
+    public Image b;
+    public Sprite[] sprites;
+
     private void Start()
     {
         for(int i = 0; i < 6; i++)
@@ -35,6 +39,8 @@ public class Modular_Three : MonoBehaviour
         {
             toggle.interactable = b;
         }
+        if (b == true)
+            a.sprite = sprites[0];
     }
 
     public void AddBtn(int n)
@@ -58,6 +64,7 @@ public class Modular_Three : MonoBehaviour
             if (temp)
             {
                 Electric_boxManager.instance.ModularThree = true;
+                b.sprite = sprites[1];
             }
         }
     }

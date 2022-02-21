@@ -17,8 +17,8 @@ public class Modular_Two : MonoBehaviour
     public int Wire_selected = -1;//目前选择的电线起始端
 
     public Dictionary<int, int> WireDic = new Dictionary<int, int>() {
-        {1,1},
-        {2,3},
+        {1,3},
+        {2,1},
         {3,2},
         {4,4}
     };//电线对应关系
@@ -86,8 +86,6 @@ public class Modular_Two : MonoBehaviour
         {
             case 1:
                 buttons[0].GetComponent<Image>().sprite = Wire1_Sprite[e - 1];
-                buttons[0].GetComponent<RectTransform>().sizeDelta = new Vector2(24+34*(e-1), 110);
-                buttons[0].GetComponent<RectTransform>().anchoredPosition = new Vector2(-51 + 17 * (e - 1), -25);
                 WireDic[1] = e;
                 break;
             case 2:
@@ -106,6 +104,7 @@ public class Modular_Two : MonoBehaviour
                 Debug.LogWarning("出大问题");
                 break;
         }
+        SetImageSize(s, e);
         ChangeWire();
         Wire_selected = -1;
     }
@@ -113,9 +112,107 @@ public class Modular_Two : MonoBehaviour
     {
         if (WireDic[1] == 2 && WireDic[2] == 4 && WireDic[3] == 3 && WireDic[4] == 1)
         {
-            //缺一个图片替换
+            buttons[0].GetComponent<Image>().sprite = Wire1_Sprite[4];
+            buttons[1].GetComponent<Image>().sprite = Wire2_Sprite[4];
+            buttons[2].GetComponent<Image>().sprite = Wire3_Sprite[4];
+            buttons[3].GetComponent<Image>().sprite = Wire4_Sprite[4];
 
             Electric_boxManager.instance.ModularTwo = true;
+        }
+    }
+
+    /// <summary>
+    /// 暂且用着
+    /// </summary>
+    private void SetImageSize(int s,int e)
+    {
+        Debug.Log("s:" + s + ",e:" + e);
+        switch (s)
+        {
+            case 1:
+                switch (e)
+                {
+                    case 1:
+                        buttons[0].GetComponent<RectTransform>().sizeDelta = new Vector2(31f,146.8f);
+                        buttons[0].GetComponent<RectTransform>().anchoredPosition = new Vector2(-67.9f,1.2f);
+                        break;
+                    case 2:
+                        buttons[0].GetComponent<RectTransform>().sizeDelta = new Vector2(71.6f, 146.8f);
+                        buttons[0].GetComponent<RectTransform>().anchoredPosition = new Vector2(-47.6f, 1.2f);
+                        break;
+                    case 3:
+                        buttons[0].GetComponent<RectTransform>().sizeDelta = new Vector2(121.8f, 146.8f);
+                        buttons[0].GetComponent<RectTransform>().anchoredPosition = new Vector2(-22.5f, 1.2f);
+                        break;
+                    case 4:
+                        buttons[0].GetComponent<RectTransform>().sizeDelta = new Vector2(172f, 146.8f);
+                        buttons[0].GetComponent<RectTransform>().anchoredPosition = new Vector2(2.6f, 1.2f);
+                        break;
+                }
+                break;
+            case 2:
+                switch (e)
+                {
+                    case 1:
+                        buttons[1].GetComponent<RectTransform>().sizeDelta = new Vector2(71.6f, 146.8f);
+                        buttons[1].GetComponent<RectTransform>().anchoredPosition = new Vector2(-47.5f, 1.2f);
+                        break;
+                    case 2:
+                        buttons[1].GetComponent<RectTransform>().sizeDelta = new Vector2(32.7f, 146.8f);
+                        buttons[1].GetComponent<RectTransform>().anchoredPosition = new Vector2(-21.8f, 1.2f);
+                        break;
+                    case 3:
+                        buttons[1].GetComponent<RectTransform>().sizeDelta = new Vector2(73.9f, 146.8f);
+                        buttons[1].GetComponent<RectTransform>().anchoredPosition = new Vector2(6f, 1.2f);
+                        break;
+                    case 4:
+                        buttons[1].GetComponent<RectTransform>().sizeDelta = new Vector2(119.6f, 146.8f);
+                        buttons[1].GetComponent<RectTransform>().anchoredPosition = new Vector2(29f, 1.2f);
+                        break;
+                }
+                break;
+            case 3:
+                switch (e)
+                {
+                    case 1:
+                        buttons[2].GetComponent<RectTransform>().sizeDelta = new Vector2(121.9f, 146.8f);
+                        buttons[2].GetComponent<RectTransform>().anchoredPosition = new Vector2(-22.5f, 1.2f);
+                        break;
+                    case 2:
+                        buttons[2].GetComponent<RectTransform>().sizeDelta = new Vector2(73f, 146.8f);
+                        buttons[2].GetComponent<RectTransform>().anchoredPosition = new Vector2(2f, 1.2f);
+                        break;
+                    case 3:
+                        buttons[2].GetComponent<RectTransform>().sizeDelta = new Vector2(31f, 146.8f);
+                        buttons[2].GetComponent<RectTransform>().anchoredPosition = new Vector2(27.5f, 1.2f);
+                        break;
+                    case 4:
+                        buttons[2].GetComponent<RectTransform>().sizeDelta = new Vector2(71f, 146.8f);
+                        buttons[2].GetComponent<RectTransform>().anchoredPosition = new Vector2(53f, 1.2f);
+                        break;
+                }
+                break;
+            case 4:
+                switch (e)
+                {
+                    case 1:
+                        buttons[3].GetComponent<RectTransform>().sizeDelta = new Vector2(172f, 146.8f);
+                        buttons[3].GetComponent<RectTransform>().anchoredPosition = new Vector2(2.6f, 1.2f);
+                        break;
+                    case 2:
+                        buttons[3].GetComponent<RectTransform>().sizeDelta = new Vector2(119f, 146.8f);
+                        buttons[3].GetComponent<RectTransform>().anchoredPosition = new Vector2(25.7f, 1.2f);
+                        break;
+                    case 3:
+                        buttons[3].GetComponent<RectTransform>().sizeDelta = new Vector2(77f, 146.8f);
+                        buttons[3].GetComponent<RectTransform>().anchoredPosition = new Vector2(51.3f, 1.2f);
+                        break;
+                    case 4:
+                        buttons[3].GetComponent<RectTransform>().sizeDelta = new Vector2(30f, 146.8f);
+                        buttons[3].GetComponent<RectTransform>().anchoredPosition = new Vector2(75f, 1.2f);
+                        break;
+                }
+                break;
         }
     }
 }

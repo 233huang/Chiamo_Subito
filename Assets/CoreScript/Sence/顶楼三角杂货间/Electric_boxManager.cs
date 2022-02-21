@@ -19,8 +19,8 @@ public class Electric_boxManager : Singleton<Electric_boxManager>
         get { return modularOne; }
         set
         {
-            EventManger.instance.TriggerEventListener<bool>("Box_One", value);
             modularOne = value;
+            EventManger.instance.TriggerEventListener<bool>("Box_One", value); 
         }
     }
 
@@ -30,8 +30,8 @@ public class Electric_boxManager : Singleton<Electric_boxManager>
         get { return modularTwo; }
         set
         {
-            EventManger.instance.TriggerEventListener<bool>("Box_Two", value);
             modularTwo = value;
+            EventManger.instance.TriggerEventListener<bool>("Box_Two", value);
         }
     }
 
@@ -42,6 +42,7 @@ public class Electric_boxManager : Singleton<Electric_boxManager>
         set
         {
             modularThree = value;
+            EventManger.instance.TriggerEventListener<bool>("Box_Three", value);
         }
     }
 }
