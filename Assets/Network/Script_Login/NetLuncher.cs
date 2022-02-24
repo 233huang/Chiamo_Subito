@@ -30,8 +30,8 @@ public class NetLuncher : MonoBehaviourPunCallbacks
     }*/
     public void JoinOrCreateRoom()
     {
+        Debug.Log("x");
         RoomOptions options = new RoomOptions { MaxPlayers = 2 };
-
         PhotonNetwork.JoinOrCreateRoom(SetRoom.text, options, default);
     }
 

@@ -18,10 +18,18 @@ public class ItemManager : MonoBehaviour
 
     public void AddItem(string s)
     {
+        if (Plane.GetComponent<Image>().enabled == false)
+            Plane.GetComponent<Image>().enabled = true;
         if(s == "PaperTape")
         {
             GameObject item  = Instantiate(Item, Plane.transform);
-            item.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("");
+            item.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("xx");
+            ItemDic.Add(s, item);
+        }
+        if(s == "Key")
+        {
+            GameObject item = Instantiate(Item, Plane.transform);
+            item.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("Item/Key");
             ItemDic.Add(s, item);
         }
     }

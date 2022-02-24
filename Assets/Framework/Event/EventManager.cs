@@ -12,6 +12,10 @@ public class EventInfo<T> : IEventInfo
 { 
     public UnityAction<T> action;
 }
+public class EventInfo<T, F> : IEventInfo
+{
+    public UnityAction<T, F> action;
+}
 
 public class EventManger : Singleton<EventManger>
 {
@@ -34,7 +38,6 @@ public class EventManger : Singleton<EventManger>
             actionDic.Add(name, new EventInfo(){ action = action});
         }
     }
-
     public void AddEventListener<T>(string name, UnityAction<T> action, bool single = true)
     {
         if (actionDic.ContainsKey(name) && single)
@@ -52,6 +55,21 @@ public class EventManger : Singleton<EventManger>
             actionDic.Add(name, new EventInfo<T>() { action = action });
         }
     }
+    public void AddEventListener<T,F>(string name, UnityAction<T,F> action, bool single = true)
+    {
+        if (actionDic.ContainsKey(name) && single)
+        {
+            actionDic.Remove(name);
+        }
+        if (actionDic.ContainsKey(name))
+        {
+            (actionDic[name] as EventInfo<T,F>).action += action;
+        }
+        else
+        {
+            actionDic.Add(name, new EventInfo<T,F>() { action = action });
+        }
+    }
 
     public void RemoveEventListener(string name, UnityAction action)
     {
@@ -65,7 +83,6 @@ public class EventManger : Singleton<EventManger>
             }
         }
     }
-
     public void RemoveEventListener<T>(string name, UnityAction<T> action)
     {
         if (actionDic.ContainsKey(name))
@@ -73,6 +90,18 @@ public class EventManger : Singleton<EventManger>
             (actionDic[name] as EventInfo<T>).action -= action;
 
             if ((actionDic[name] as EventInfo<T>).action == null)
+            {
+                actionDic.Remove(name);
+            }
+        }
+    }
+    public void RemoveEventListener<T,F>(string name, UnityAction<T,F> action)
+    {
+        if (actionDic.ContainsKey(name))
+        {
+            (actionDic[name] as EventInfo<T,F>).action -= action;
+
+            if ((actionDic[name] as EventInfo<T,F>).action == null)
             {
                 actionDic.Remove(name);
             }
@@ -86,12 +115,18 @@ public class EventManger : Singleton<EventManger>
             (actionDic[name] as EventInfo).action?.Invoke();
         }
     }
-
     public void TriggerEventListener<T>(string name,T par)
     {
         if (actionDic.ContainsKey(name))
         {
             (actionDic[name] as EventInfo<T>).action?.Invoke(par);
+        }
+    }
+    public void TriggerEventListener<T,F>(string name, T par,F par2)
+    {
+        if (actionDic.ContainsKey(name))
+        {
+            (actionDic[name] as EventInfo<T,F>).action?.Invoke(par, par2);
         }
     }
 

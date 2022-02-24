@@ -45,20 +45,14 @@ public class Modular_Four : MonoBehaviour
         if(temp)
         {
             Debug.Log("vvvv!");
-            //synchro();
-        }    
-          
+            PlayerManager.instance.GetComponent<PhotonView>().RPC("SetLight", RpcTarget.All, "level1", 1f);
+            PlayerManager.instance.GetComponent<PhotonView>().RPC("SetLight", RpcTarget.All, "杂货间", 1f);
+        }            
     }
 
 
     public void synchro()
     {
         GetComponent<PhotonView>().RPC("otherplayerchoice", RpcTarget.All);
-    }
-
-    [PunRPC]
-    void otherplayerchoice()
-    {
-        Debug.Log("开灯啦！");
     }
 }

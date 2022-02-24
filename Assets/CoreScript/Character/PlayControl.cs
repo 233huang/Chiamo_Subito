@@ -21,10 +21,9 @@ namespace Com.MyCompany.MyGame
         public bool[] allowControl;
         private void Awake()
         {
-            distortionFilter = this.transform.Find("Speaker").gameObject.GetComponent<AudioDistortionFilter>();
             EventManger.instance.AddEventListener<float>("Distortion", Distortion);
 
-            EventManger.instance.AddEventListener("DeletePlayer", DestoryMyselft);
+            distortionFilter = this.transform.Find("Speaker").gameObject.GetComponent<AudioDistortionFilter>();
             animator = this.transform.Find("Sprite").GetComponent<Animator>();
 
             allowControl = new bool[10];
@@ -36,16 +35,20 @@ namespace Com.MyCompany.MyGame
             {
                 return;
             }
+
             #region 角色控制
             if (Input.GetKey(KeyCode.A))
             {
-                this.transform.position = new Vector3(transform.position.x - speed * Time.deltaTime, transform.position.y, 1);
+                //this.transform.position = new Vector3(transform.position.x - speed * Time.deltaTime, transform.position.y, 1);
+                this.transform.Translate(Vector3.left * Time.deltaTime * speed);
+                
                 this.transform.eulerAngles = new Vector3(transform.rotation.x, 0, transform.rotation.z);
                 animator.SetBool("ismove", true);
             }
             if (Input.GetKey(KeyCode.D))
             {
-                this.transform.position = new Vector3(transform.position.x + speed * Time.deltaTime, transform.position.y, 1);
+                //this.transform.position = new Vector3(transform.position.x + speed * Time.deltaTime, transform.position.y, 1);
+                this.transform.Translate(Vector3.left * Time.deltaTime * speed);
                 this.transform.eulerAngles = new Vector3(transform.rotation.x, 180, transform.rotation.z);
                 animator.SetBool("ismove", true);
             }
@@ -64,15 +67,6 @@ namespace Com.MyCompany.MyGame
             #endregion
         }
 
-        private void DestoryMyselft()
-        {
-            if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
-            {
-                return;
-            }
-            Destroy(this);
-        }
-
         private void Distortion(float f)
         {
             distortionFilter.distortionLevel = f;
@@ -81,6 +75,5 @@ namespace Com.MyCompany.MyGame
         {
             reverbFilter.reverbPreset = (AudioReverbPreset)i;
         }
-
     }
 }

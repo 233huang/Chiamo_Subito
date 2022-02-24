@@ -61,7 +61,7 @@ public class Box_ItemDrag : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDra
         if(collision.tag == "end"&&this.gameObject.name =="key")
         {
             this.transform.parent.gameObject.SetActive(false);
-            GameObject.Find("KEYYYY").gameObject.SetActive(true);
+            this.transform.parent.parent.Find("KEYYYY").gameObject.SetActive(true);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

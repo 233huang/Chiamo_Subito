@@ -15,8 +15,8 @@ public class ChinarRayCast : MonoBehaviour
 
     private void Start()
     {
-        EventManger.instance.AddEventListener<int>("OtherPlayerChoice", OtherPlayerChoice);//有玩家选择人物后就执行该事件
-        OtherPlayerChoice(PlayerManager.instance.OtherCharacterID);
+        //EventManger.instance.AddEventListener<int>("OtherPlayerChoice", OtherPlayerChoice);//有玩家选择人物后就执行该事件
+        //OtherPlayerChoice(PlayerManager.instance.OtherCharacterID);
     }
 
     void Update()
@@ -30,16 +30,16 @@ public class ChinarRayCast : MonoBehaviour
             if (hit.collider.name == "LiAng")
             {
                 liang.chance(true);
-                if (PlayerManager.instance.OtherCharacterID != 1 && PlayerManager.instance.CharacterID != 1)
+                //if (PlayerManager.instance.OtherCharacterID != 1 && PlayerManager.instance.CharacterID != 1)
                     lilian.chance(false);
-                if (Input.GetKeyDown(KeyCode.Return) && PlayerManager.instance.OtherCharacterID != 0)
+                if (Input.GetKeyDown(KeyCode.Return) && PlayerManager.instance.alreadyChocieCharacter[0] == false)
                 {
                     if (!isChoice)
                     {
                         PlayerManager.instance.CharacterID = 0;
                         isChoice = true;
-                        if (PlayerManager.instance.OtherCharacterID != -1)
-                            LoadNextScence();
+                        /*if (PlayerManager.instance.OtherCharacterID != -1)
+                            LoadNextScence();*/
                         PlayerManager.instance.gameObject.GetComponent<PhotonView>().RPC("OtherPlayerChoice", RpcTarget.All, 0);
                     }
                 }
@@ -47,16 +47,16 @@ public class ChinarRayCast : MonoBehaviour
             if (hit.collider.name == "LiLiAn")
             {
                 lilian.chance(true);
-                if (PlayerManager.instance.OtherCharacterID != 0 && PlayerManager.instance.CharacterID != 0)
+                //if (PlayerManager.instance.OtherCharacterID != 0 && PlayerManager.instance.CharacterID != 0)
                     liang.chance(false);
-                if (Input.GetKeyDown(KeyCode.Return) && PlayerManager.instance.OtherCharacterID != 1)
+                if (Input.GetKeyDown(KeyCode.Return) && PlayerManager.instance.alreadyChocieCharacter[1] == false)
                 {
                     if (!isChoice)
                     {
                         PlayerManager.instance.CharacterID = 1;
                         isChoice = true;
-                        if (PlayerManager.instance.OtherCharacterID != -1)
-                            LoadNextScence();
+                        /*if (PlayerManager.instance.OtherCharacterID != -1)
+                            LoadNextScence();*/
                         PlayerManager.instance.gameObject.GetComponent<PhotonView>().RPC("OtherPlayerChoice", RpcTarget.All, 1);
                     }
                 }
@@ -64,14 +64,20 @@ public class ChinarRayCast : MonoBehaviour
         }
         else
         {
-            if (PlayerManager.instance.OtherCharacterID != 1 && PlayerManager.instance.CharacterID != 1)
+            //if (PlayerManager.instance.OtherCharacterID != 1 && PlayerManager.instance.CharacterID != 1)
                 lilian.chance(false);
-            if (PlayerManager.instance.OtherCharacterID != 0 && PlayerManager.instance.CharacterID != 0)
+            //if (PlayerManager.instance.OtherCharacterID != 0 && PlayerManager.instance.CharacterID != 0)
                 liang.chance(false);
         }
+
+
+        if(PlayerManager.instance.alreadyChocieCharacter[0])
+            liang.GetComponent<ChangeImage>().chance(true);
+        if (PlayerManager.instance.alreadyChocieCharacter[1])
+            lilian.GetComponent<ChangeImage>().chance(true);
     }
 
-    void OtherPlayerChoice(int id)
+    /*void OtherPlayerChoice(int id)
     {
         if (id == 0)
         {
@@ -81,7 +87,7 @@ public class ChinarRayCast : MonoBehaviour
         {
             lilian.GetComponent<ChangeImage>().chance(true);
         }
-    }
+    }*/
 
     void LoadNextScence()
     {
