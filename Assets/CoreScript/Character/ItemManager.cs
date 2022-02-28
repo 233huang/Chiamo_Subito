@@ -32,6 +32,12 @@ public class ItemManager : MonoBehaviour
             item.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("Item/Key");
             ItemDic.Add(s, item);
         }
+        if(s == "Note")
+        {
+            GameObject item = Instantiate(Item, Plane.transform);
+            item.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("Item/Note");
+            ItemDic.Add(s, item);
+        }
     }
     public void RemoveItme(string s,int num =1)
     {

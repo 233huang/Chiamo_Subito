@@ -10015,6 +10015,7 @@ MonoBehaviour:
   - {fileID: 1229998184}
   - {fileID: 837077893}
   - {fileID: 531156517}
+  Door: {fileID: 330753188}
 --- !u!1 &1592126098
 GameObject:
   m_ObjectHideFlags: 0

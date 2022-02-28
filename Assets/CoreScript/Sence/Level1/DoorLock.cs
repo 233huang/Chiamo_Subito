@@ -8,6 +8,8 @@ public class DoorLock : MonoBehaviour
     private bool isok =false;
     private bool yes = true;
 
+    public GameObject Door;
+
     private void Update()
     {
         if (isok)
@@ -24,6 +26,8 @@ public class DoorLock : MonoBehaviour
             if (yes)
             {
                 isok = false;
+                Destroy(Door.GetComponent<OtherView_item>());
+                Door.AddComponent<Level1_LoadNext>();
             }    
         }
     }

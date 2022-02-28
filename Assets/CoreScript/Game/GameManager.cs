@@ -28,6 +28,8 @@ namespace Com.MyCompany.MyGame
         }
         private void Update()
         {
+            if (PlayerManager.instance==null)
+                return;
             if (SceneManager.GetActiveScene().name == PlayerManager.instance.PlayerScenes[PlayerManager.instance.CharacterID == 0 ? 1 : 0])
             {
                 Camera.main.cullingMask = -1;
