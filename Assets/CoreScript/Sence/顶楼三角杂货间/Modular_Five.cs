@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,8 +27,15 @@ public class Modular_Five : MonoBehaviour
         }
         else
         {
-            Debug.Log("x");
-            Electric_boxManager.instance.Work = false;
+            if(Electric_boxManager.instance.ModularFour)
+            {
+                PlayerManager.instance.GetComponent<PhotonView>().RPC("SetLight", RpcTarget.All, "level1", 1f);
+                PlayerManager.instance.GetComponent<PhotonView>().RPC("SetLight", RpcTarget.All, "杂货间", 1f);
+            }
+            else
+            {
+                Electric_boxManager.instance.Work = false;
+            }
             Up = true;
             Down = true;
         }

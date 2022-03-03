@@ -31,6 +31,7 @@ public class Cat_dialogue : MonoBehaviour,IPointerDownHandler
     private int index=0;
     private int caiindex=0;
     private int timetemp=1;
+    private int result;//1赢 0平 -1败
 
     private void Start()
     {
@@ -57,6 +58,7 @@ public class Cat_dialogue : MonoBehaviour,IPointerDownHandler
                 t.gameObject.SetActive(true);
             }
             StratCai = true;
+            TimeImage.gameObject.SetActive(true);
             return;
         }
 
@@ -106,10 +108,61 @@ public class Cat_dialogue : MonoBehaviour,IPointerDownHandler
         {
             t.interactable = false;
         }
-        if (Cai.sprite == Cat_cai[0])
+        if (Cai.sprite == Cat_cai[0])//布
         {
-
+            if(LiAnSelect  == 1)//剪
+            {
+                result = 1;
+            }
+            if (LiAnSelect == 2)//布
+            {
+                result = 0;
+            }
+            if (LiAnSelect == 3)//拳
+            {
+                result = -1;
+            }
         }
-        
+        if (Cai.sprite == Cat_cai[0])//拳头
+        {
+            if (LiAnSelect == 1)
+            {
+                result = -1;
+            }
+            if (LiAnSelect == 2)
+            {
+                result = 1;
+            }
+            if (LiAnSelect == 3)
+            {
+                result = 0;
+            }
+        }
+        if (Cai.sprite == Cat_cai[0])//剪刀
+        {
+            if (LiAnSelect == 1)
+            {
+                result = 0;
+            }
+            if (LiAnSelect == 2)
+            {
+                result = -1;
+            }
+            if (LiAnSelect == 3)
+            {
+                result = 1;
+            }
+        }
+
+        switch (result)
+        {
+            case 1:
+                break;
+            case 0:
+                break;
+            case -1:
+                break;
+        }
+
     }
 }

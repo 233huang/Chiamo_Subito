@@ -20,6 +20,7 @@ public class Delete_item : MonoBehaviour
     {
         if (del)
         {
+            transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = false;
             this.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, Mathf.Lerp(this.GetComponent<SpriteRenderer>().color.a, 0f,Time.deltaTime));
             if (this.GetComponent<SpriteRenderer>().color.a <= 0.3)
             {

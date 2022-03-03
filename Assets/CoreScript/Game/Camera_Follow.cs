@@ -13,5 +13,9 @@ public class Camera_Follow : MonoBehaviour
             this.GetComponent<CinemachineVirtualCamera>().Follow = GameObject.FindGameObjectWithTag("Player").transform;
             Destroy(this);
         }
+        else
+        {
+            Debug.Log("??");
+        }
     }
 }

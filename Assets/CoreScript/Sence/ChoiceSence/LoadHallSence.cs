@@ -18,7 +18,7 @@ public class LoadHallSence : MonoBehaviour
     }
     private void LoadHall()
     {
-        Photon.Pun.PhotonNetwork.LoadLevel("Hall");
-
+        //Photon.Pun.PhotonNetwork.LoadLevel("Hall");
+        SenceLoadManager.instance.LoadSence("Hall", PlayerManager.instance.PlayerCreatVector["Hall"][0]);
     }
 }

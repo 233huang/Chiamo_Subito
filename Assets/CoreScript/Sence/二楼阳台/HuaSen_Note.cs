@@ -8,7 +8,7 @@ public class HuaSen_Note : MonoBehaviour
     public void ShowNote()
     {
         Note.SetActive(true);
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 
     public void GetNote()

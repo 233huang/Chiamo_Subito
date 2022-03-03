@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
+using System.Collections.Generic;
 
 /// <summary>
 /// 游戏全局管理类
@@ -14,23 +15,26 @@ namespace Com.MyCompany.MyGame
     {
         public bool CreatePlayer;
 
-        public Vector3 tran;
+        //public Vector3 tran;
         public Vector3 size;
+
+        private PlayerManager playerManager;
+
         private void Start()
         {
-            //EventManger.instance.AddEventListener("PhotonInstanticPlayer", PhotonInstanticPlayer);
+            playerManager = PlayerManager.instance;
 
-            PlayerManager.instance.GetComponent<PhotonView>().RPC("SetPlayerSences", RpcTarget.All,
-                PlayerManager.instance.CharacterID, SceneManager.GetActiveScene().name);
+            playerManager.GetComponent<PhotonView>().RPC("SetPlayerSences", RpcTarget.All,
+                playerManager.CharacterID, SceneManager.GetActiveScene().name);
             
             if (CreatePlayer)
                 InstanticPlayer();
         }
         private void Update()
         {
-            if (PlayerManager.instance==null)
+            if (playerManager == null)
                 return;
-            if (SceneManager.GetActiveScene().name == PlayerManager.instance.PlayerScenes[PlayerManager.instance.CharacterID == 0 ? 1 : 0])
+            if (SceneManager.GetActiveScene().name == playerManager.PlayerScenes[playerManager.CharacterID == 0 ? 1 : 0])
             {
                 Camera.main.cullingMask = -1;
             }
@@ -38,27 +42,25 @@ namespace Com.MyCompany.MyGame
             {
                 SetCameraMask();
             }
-            /*if (Input.GetKey(KeyCode.X))
-            {
-                Camera.main.cullingMask = -1;
-            }
-            if (Input.GetKey(KeyCode.Y))
-            {
-                SetCameraMask();
-            }*/
         }
 
         private void InstanticPlayer()
         {
-            if (PlayerManager.instance.CharacterID == 0)
+            if (playerManager.CharacterID == 0)
             {
-                GameObject player = PhotonNetwork.Instantiate("Player/LiAng", tran, Quaternion.identity, 0);
+                //GameObject player = PhotonNetwork.Instantiate("Player/LiAng", tran, Quaternion.identity, 0);
+                GameObject player = PhotonNetwork.Instantiate("Player/LiAng", 
+                    playerManager.NextSenceVector,
+                    Quaternion.identity, 0);
                 player.transform.localScale = size;
                 player.transform.SetParent(GameObject.Find("Game").transform);
             }
-            if (PlayerManager.instance.CharacterID == 1)
+            if (playerManager.CharacterID == 1)
             {
-                GameObject player = PhotonNetwork.Instantiate("Player/LiLiAn", tran, Quaternion.identity, 0);
+                //GameObject player = PhotonNetwork.Instantiate("Player/LiLiAn", tran, Quaternion.identity, 0);
+                GameObject player = PhotonNetwork.Instantiate("Player/LiLiAn",
+                    playerManager.NextSenceVector,
+                    Quaternion.identity, 0);
                 player.transform.localScale = size;
                 player.transform.SetParent(GameObject.Find("Game").transform);
             }
@@ -67,22 +69,20 @@ namespace Com.MyCompany.MyGame
 
         private void SetCameraMask()
         {
-            if (PlayerManager.instance.CharacterID == 0)
+            if (playerManager.CharacterID == 0)
             {
                 Camera.main.cullingMask &= ~(1 << 9);
             }
-            if (PlayerManager.instance.CharacterID == 1)
+            if (playerManager.CharacterID == 1)
             {
                 Camera.main.cullingMask &= ~(1 << 8);
             }
         }
 
-
         public override void OnLeftRoom()
         {
             SceneManager.LoadScene(0);
         }
-
 
     }
 }

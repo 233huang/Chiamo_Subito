@@ -16,11 +16,13 @@ public class DoorAndLoad : MonoBehaviour
 
                 if (PlayerManager.instance.CharacterID == 0)
                 {
-                    SceneManager.LoadScene("Level1");
+                    //SceneManager.LoadScene("Level1");
+                    SenceLoadManager.instance.LoadSence("Level1", PlayerManager.instance.PlayerCreatVector["Level1"][0]);
                 }
                 if (PlayerManager.instance.CharacterID == 1)
                 {
-                    SceneManager.LoadScene("顶楼三角杂货间");
+                    //SceneManager.LoadScene("顶楼三角杂货间");
+                    SenceLoadManager.instance.LoadSence("顶楼三角杂货间", PlayerManager.instance.PlayerCreatVector["顶楼三角杂货间"][0]);
                 }
             }
         }

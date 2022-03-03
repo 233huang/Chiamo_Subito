@@ -24,6 +24,7 @@ public class Animation_item : MonoBehaviour
             if (Input.GetKey(KeyCode.E))
             {
                 animator.SetBool("run", true);
+                Destroy(transform.GetChild(0).gameObject);
             }  
         }
     }

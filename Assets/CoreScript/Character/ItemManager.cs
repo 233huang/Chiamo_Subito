@@ -7,7 +7,7 @@ public class ItemManager : MonoBehaviour
 {
     public GameObject Plane;
     public GameObject Item;
-    public Dictionary<string, GameObject> ItemDic;
+    public Dictionary<string, GameObject> ItemDic = new Dictionary<string, GameObject>();
     public static ItemManager instance = null;
 
     private void Awake()

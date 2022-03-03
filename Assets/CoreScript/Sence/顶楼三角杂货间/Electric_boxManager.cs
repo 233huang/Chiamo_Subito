@@ -45,4 +45,15 @@ public class Electric_boxManager : Singleton<Electric_boxManager>
             EventManger.instance.TriggerEventListener<bool>("Box_Three", value);
         }
     }
+
+    private bool modularFour = false;//第四模块
+    public bool ModularFour
+    {
+        get { return modularFour; }
+        set
+        {
+            modularFour = value;
+            EventManger.instance.TriggerEventListener<bool>("Box_Four", value);
+        }
+    }
 }

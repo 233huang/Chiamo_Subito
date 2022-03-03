@@ -44,9 +44,9 @@ public class Modular_Four : MonoBehaviour
         }
         if(temp)
         {
-            Debug.Log("vvvv!");
-            PlayerManager.instance.GetComponent<PhotonView>().RPC("SetLight", RpcTarget.All, "level1", 1f);
-            PlayerManager.instance.GetComponent<PhotonView>().RPC("SetLight", RpcTarget.All, "杂货间", 1f);
+            Electric_boxManager.instance.ModularFour = true;
+            //PlayerManager.instance.GetComponent<PhotonView>().RPC("SetLight", RpcTarget.All, "level1", 1f);
+            //PlayerManager.instance.GetComponent<PhotonView>().RPC("SetLight", RpcTarget.All, "杂货间", 1f);
         }            
     }
 

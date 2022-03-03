@@ -12,7 +12,7 @@ public class Level1_LoadNext : MonoBehaviour
         {
             if (PlayerManager.instance.CharacterID == 0)
             {
-                SceneManager.LoadScene("二楼阳台");
+                SenceLoadManager.instance.LoadSence("二楼阳台", PlayerManager.instance.PlayerCreatVector["二楼阳台"][0]);
             }
         }
     }
