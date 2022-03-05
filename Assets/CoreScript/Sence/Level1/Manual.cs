@@ -36,7 +36,7 @@ public class Manual : MonoBehaviour
     {
         if (startfang)
         { 
-            page.color = new Color(1, 1, 1, Mathf.Lerp(page.color.a, 0, Time.deltaTime));
+            page.color = new Color(1, 1, 1, Mathf.Lerp(page.color.a, 0, Time.deltaTime*2));
             Debug.Log("a:"+page.color.a);
             if (page.color.a <= 0.2)
             {
@@ -48,8 +48,8 @@ public class Manual : MonoBehaviour
         }
         if (endfang)
         {
-            page.color = new Color(1, 1, 1, Mathf.Lerp(page.color.a, 1, Time.deltaTime));
-            if(page.color.a >= 0.8)
+            page.color = new Color(1, 1, 1, Mathf.Lerp(page.color.a, 1, Time.deltaTime*3));
+            if(page.color.a >= 0.9)
             {
                 endfang = false;
                 CurrentPage = ToNumber;

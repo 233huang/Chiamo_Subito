@@ -7,7 +7,7 @@ public class Yantai_LoadNext : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = true;
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             SenceLoadManager.instance.LoadSence("Level1", PlayerManager.instance.PlayerCreatVector["Level1"][1]);   
         }

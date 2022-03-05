@@ -10,7 +10,7 @@ public class DoorAndLoad : MonoBehaviour
     {
         if (enter)
         {
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 Photon.Pun.PhotonNetwork.AutomaticallySyncScene = false;
 

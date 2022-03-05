@@ -8,7 +8,7 @@ public class Topic_Load : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = true;
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (PlayerManager.instance.CharacterID == 1)
             {

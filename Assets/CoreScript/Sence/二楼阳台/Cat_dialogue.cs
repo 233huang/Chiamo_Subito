@@ -6,32 +6,35 @@ using UnityEngine.UI;
 
 public class Cat_dialogue : MonoBehaviour,IPointerDownHandler
 {
+    //人物
     public Image LiAn;
     public Image Cat;
     public Sprite[] CharacterSprite;
-
+    //对话
     public Image LiAnText;
     public Image CatText;
     public Sprite[] sprites;
-
+    private bool[] isLiAn = new bool[8] { true, false, true, false, false, true,false,true };
+    private int index = 0;
+    //猜拳
     public Image Cai;
     public Sprite[] Cat_cai;
-
+    public Toggle[] LiAnCai;
+    private bool StratCai; 
+    private int caiindex = 0;
+    private int LiAnSelect = 1;
+    private int result;//1赢 0平 -1败
+    //时间
     public Image TimeImage;
     public Sprite[] Time_sprite;
-
-    public Toggle[] LiAnCai;
-
-    private bool StratCai;
     private float timeer;
-
-    private bool[] isLiAn = new bool[6] { true, false, true, false, false, true };
-    private int LiAnSelect = 1;
-
-    private int index=0;
-    private int caiindex=0;
-    private int timetemp=1;
-    private int result;//1赢 0平 -1败
+    private int timetemp = 1;
+    //结果
+    public Image resultImage;
+    public Sprite[] resultSprites;
+    public Button again;
+    public Button quit;
+    public GameObject key;
 
     private void Start()
     {
@@ -44,6 +47,23 @@ public class Cat_dialogue : MonoBehaviour,IPointerDownHandler
                 } });
             i++;
         }
+
+        again.onClick.AddListener(() => {
+            timetemp = 1;
+            timeer = 0;
+            caiindex = 0;
+            foreach (Toggle t in LiAnCai)
+            {
+                t.gameObject.SetActive(true);
+                t.interactable = true;
+            }
+            Cai.enabled = true;
+            resultImage.gameObject.SetActive(false);
+            TimeImage.gameObject.SetActive(true);
+            again.gameObject.SetActive(false);
+            quit.gameObject.SetActive(false);
+            StratCai = true;
+        });
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -60,6 +80,16 @@ public class Cat_dialogue : MonoBehaviour,IPointerDownHandler
             StratCai = true;
             TimeImage.gameObject.SetActive(true);
             return;
+        }
+        if (index == 7)
+        {
+            Cat.enabled = false;
+            key.SetActive(true);
+        }
+        if (index == 8)
+        {
+            Destroy(this.transform.parent.gameObject);
+            ItemManager.instance.AddItem("华钥匙");
         }
 
         LiAnText.enabled = isLiAn[index];
@@ -123,7 +153,7 @@ public class Cat_dialogue : MonoBehaviour,IPointerDownHandler
                 result = -1;
             }
         }
-        if (Cai.sprite == Cat_cai[0])//拳头
+        if (Cai.sprite == Cat_cai[1])//拳头
         {
             if (LiAnSelect == 1)
             {
@@ -138,7 +168,7 @@ public class Cat_dialogue : MonoBehaviour,IPointerDownHandler
                 result = 0;
             }
         }
-        if (Cai.sprite == Cat_cai[0])//剪刀
+        if (Cai.sprite == Cat_cai[2])//剪刀
         {
             if (LiAnSelect == 1)
             {
@@ -154,13 +184,30 @@ public class Cat_dialogue : MonoBehaviour,IPointerDownHandler
             }
         }
 
+        resultImage.gameObject.SetActive(true);
+        Cai.enabled = false;
+        foreach (Toggle t in LiAnCai)
+        {
+            t.gameObject.SetActive(false);
+        }
+        TimeImage.gameObject.SetActive(false);
         switch (result)
         {
             case 1:
+                resultImage.sprite = resultSprites[0];
+                CatText.enabled = true;
+                CatText.sprite = sprites[6];
+                index++;
                 break;
             case 0:
+                resultImage.sprite = resultSprites[1];
+                again.gameObject.SetActive(true);
+                quit.gameObject.SetActive(true);
                 break;
             case -1:
+                resultImage.sprite = resultSprites[2];
+                again.gameObject.SetActive(true);
+                quit.gameObject.SetActive(true);
                 break;
         }
 

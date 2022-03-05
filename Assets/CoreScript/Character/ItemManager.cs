@@ -20,24 +20,27 @@ public class ItemManager : MonoBehaviour
     {
         if (Plane.GetComponent<Image>().enabled == false)
             Plane.GetComponent<Image>().enabled = true;
-        if(s == "PaperTape")
+
+        GameObject item = Instantiate(Item, Plane.transform);
+        switch (s)
         {
-            GameObject item  = Instantiate(Item, Plane.transform);
-            item.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("xx");
-            ItemDic.Add(s, item);
+            case "PaperTape":
+                item.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("xx");
+                break;
+            case "Key":
+                item.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("Item/Key");
+                break;
+            case "Note":
+                item.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("Item/Note");
+                break;
+            case "华钥匙":
+                item.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("Item/华钥匙");
+                break;
+            case "实验室的掉落钥匙":
+                item.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("Item/实验室的掉落钥匙");
+                break;
         }
-        if(s == "Key")
-        {
-            GameObject item = Instantiate(Item, Plane.transform);
-            item.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("Item/Key");
-            ItemDic.Add(s, item);
-        }
-        if(s == "Note")
-        {
-            GameObject item = Instantiate(Item, Plane.transform);
-            item.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("Item/Note");
-            ItemDic.Add(s, item);
-        }
+        ItemDic.Add(s, item);
     }
     public void RemoveItme(string s,int num =1)
     {

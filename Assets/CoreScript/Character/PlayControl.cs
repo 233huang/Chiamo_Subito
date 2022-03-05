@@ -11,7 +11,7 @@ namespace Com.MyCompany.MyGame
     public class PlayControl : MonoBehaviourPun
     {
         [SerializeField]
-        private float speed = 4f;
+        public float speed = 4f;
         [SerializeField]
         private AudioDistortionFilter distortionFilter;
         private AudioReverbFilter reverbFilter;
