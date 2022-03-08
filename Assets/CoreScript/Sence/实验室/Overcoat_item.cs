@@ -9,45 +9,53 @@ public class Overcoat_item : MonoBehaviour
     private SpriteRenderer E;
     private bool Animationing = false;
     private int index = 0;
+    private bool CanE;
 
     private void Start()
     {
         animator = this.gameObject.GetComponent<Animator>();
         E = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
     }
+    private void Update()
+    {
+        if(CanE)
+        {
+            if (Input.GetKeyDown(KeyCode.E) && !Animationing)
+            {
+                Debug.Log("x");
+                E.enabled = false;
+                Animationing = true;
+                index++;
+                if (index < 4)
+                    animator.Play("摇晃");
+                else
+                    animator.SetBool("掉落", true);
+            }
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         E.enabled = true;
+        CanE = true;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (Input.GetKeyDown(KeyCode.E)&& !Animationing)
-        {
-            E.enabled = false;
-            Animationing = true;
-            index++;
-            if (index < 4)
-                animator.SetBool("晃动", true);
-            else
-                animator.SetBool("掉落", true);
-        }
-
-    }
     private void OnTriggerExit2D(Collider2D collision)
     {
         E.enabled = false;
+        CanE = false;
     }
 
     public void OnFirstAnimationEnd()
     {
+        Debug.Log("+1");
         E.enabled = true;
         Animationing = false;
     }
     public void OnSecondAnimationEnd()
     {
         key.SetActive(true);
+        animator.SetBool("掉落", false);
         Destroy(this);
     }
 }

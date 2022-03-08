@@ -2,27 +2,56 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 public class LoadSence : MonoBehaviour
 {
-    
-    public void load1()
+    private SpriteRenderer E;
+    public SenceName senceName;
+    public enum SenceName { Hall, Level1, 顶楼三角杂货间, 二楼阳台 , 格瑞实验室 };
+    public int entrance;
+    private void Start()
     {
-        SenceLoadManager.instance.LoadSence("Hall", PlayerManager.instance.PlayerCreatVector["Hall"][0]);
+        E = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
     }
-    public void load2()
+
+    public void load()
     {
-        SenceLoadManager.instance.LoadSence("Level1", PlayerManager.instance.PlayerCreatVector["Level1"][0]);
+        SenceLoadManager.instance.LoadSence(senceName.ToString(), PlayerManager.instance.PlayerCreatVector[senceName.ToString()][entrance]) ;
     }
-    public void load3()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        SenceLoadManager.instance.LoadSence("顶楼三角杂货间", PlayerManager.instance.PlayerCreatVector["顶楼三角杂货间"][0]);
+        E.enabled = true;
     }
-    public void load4()
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        SenceLoadManager.instance.LoadSence("二楼阳台", PlayerManager.instance.PlayerCreatVector["二楼阳台"][0]);
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            load();
+        }
     }
-    public void load5()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        SenceLoadManager.instance.LoadSence("格瑞实验室", PlayerManager.instance.PlayerCreatVector["格瑞实验室"][0]);
+        E.enabled = false;
+    }
+
+}
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(LoadSence))]
+public class LoadSenceEidtor:Editor
+{
+    public override void OnInspectorGUI()
+    {
+        LoadSence script = target as LoadSence;
+        script.senceName = (LoadSence.SenceName)EditorGUILayout.EnumPopup("SenceName:",
+               script.senceName);
     }
 }
+
+#endif
+
+

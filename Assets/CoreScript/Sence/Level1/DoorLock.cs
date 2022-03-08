@@ -26,6 +26,7 @@ public class DoorLock : MonoBehaviour
             if (yes)
             {
                 isok = false;
+                SenceDataControl.instance.RightDoor = true;
                 Destroy(Door.GetComponent<OtherView_item>());
                 Door.AddComponent<Level1_LoadNext>();
             }    
@@ -34,5 +35,15 @@ public class DoorLock : MonoBehaviour
     private void OnEnable()
     {
         isok = true;
+        if (SenceDataControl.instance.RightDoor)
+        {
+            SenceLoadManager.instance.LoadSence("二楼阳台", PlayerManager.instance.PlayerCreatVector["二楼阳台"][0]);
+        }
+    }
+
+    public void DestoryThis()
+    {
+        if (SenceDataControl.instance.RightDoor)
+            Destroy(this.gameObject);
     }
 }

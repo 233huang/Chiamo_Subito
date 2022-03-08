@@ -48,7 +48,7 @@ public class PlayerManager : MonoBehaviourPun
         Debug.Log("有玩家选择了角色");
         alreadyChocieCharacter[id] = true;
         if(alreadyChocieCharacter[0]&&alreadyChocieCharacter[1])
-            PhotonNetwork.LoadLevel("Hall");
+            SenceLoadManager.instance.LoadSence("Hall", PlayerManager.instance.PlayerCreatVector["Hall"][0]);
     }
 
     [PunRPC]
@@ -77,7 +77,7 @@ public class PlayerManager : MonoBehaviourPun
                 {"Level1",new List<Vector3>(){ new Vector3(-30, -2, 1),new Vector3(35,-2,1) } },
                 {"顶楼三角杂货间", new List<Vector3>(){new Vector3(1,-2,1) } },
                 {"二楼阳台",new List<Vector3>(){ new Vector3(-8,-3.5f,1) } },
-                {"格瑞实验室",new List<Vector3>(){ new Vector3(-3,-2.6f,1) } }
+                {"格瑞实验室",new List<Vector3>(){ new Vector3(0.5f,-2f,1) } }
             };
     }
 }

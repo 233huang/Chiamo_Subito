@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class ceshi : MonoBehaviour
+using UnityEngine.EventSystems;
+public class ceshi : MonoBehaviour,IDragHandler
 {
     public InputField text;
 
@@ -33,5 +33,10 @@ public class ceshi : MonoBehaviour
     public void load5()
     {
         SenceLoadManager.instance.LoadSence("格瑞实验室", PlayerManager.instance.PlayerCreatVector["格瑞实验室"][0]);
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        this.transform.position = eventData.position;
     }
 }

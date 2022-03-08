@@ -39,11 +39,12 @@ public class Modular_Four : MonoBehaviour
         bool temp = true;
         for(int i = 0; i <= 4; i++)
         {
-            if (buttons[i].transform.localEulerAngles.z != 180)
+            if ((int)buttons[i].transform.localEulerAngles.z != 90)
                 temp = false;
         }
         if(temp)
         {
+            Debug.Log("x");
             Electric_boxManager.instance.ModularFour = true;
             //PlayerManager.instance.GetComponent<PhotonView>().RPC("SetLight", RpcTarget.All, "level1", 1f);
             //PlayerManager.instance.GetComponent<PhotonView>().RPC("SetLight", RpcTarget.All, "杂货间", 1f);

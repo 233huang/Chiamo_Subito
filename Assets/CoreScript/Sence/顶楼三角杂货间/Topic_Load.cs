@@ -1,26 +1,49 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
-public class Topic_Load : MonoBehaviour
+public class Topic_Load : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
 {
+    public string DragItemName = "NULL";
+    private bool Stay = false;
+    private void Start()
+    {
+        EventManger.instance.AddEventListener<string>("ItemDrag", TryToOpenDoor);
+    }
+    public void TryToOpenDoor(string ItemName)
+    {
+        if (DragItemName == "Key"&& Stay == true)
+        {
+            SenceDataControl.instance.FrontDoor = true;
+            ItemManager.instance.RemoveItme("Key");
+        }
+        DragItemName = ItemName;
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
-        transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = true;
-        if (Input.GetKeyDown(KeyCode.E))
+        if (SenceDataControl.instance.FrontDoor)
         {
-            if (PlayerManager.instance.CharacterID == 1)
+            transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                if (ItemManager.instance.ItemDic.ContainsKey("Key"))
-                {
-                     SenceLoadManager.instance.LoadSence("格瑞实验室", PlayerManager.instance.PlayerCreatVector["格瑞实验室"][0]);
-                }
+                SenceLoadManager.instance.LoadSence("格瑞实验室", PlayerManager.instance.PlayerCreatVector["格瑞实验室"][0]);
             }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = false;
+       transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        Stay = false;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Stay = true;
     }
 }

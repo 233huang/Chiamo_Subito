@@ -18,7 +18,7 @@ public class GetKey_item : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKey(KeyCode.E))
         {
             ItemManager.instance.AddItem("实验室的掉落钥匙");
             Destroy(this.gameObject);

@@ -88,9 +88,4 @@ public class ChinarRayCast : MonoBehaviour
             lilian.GetComponent<ChangeImage>().chance(true);
         }
     }*/
-
-    void LoadNextScence()
-    {
-        PhotonNetwork.LoadLevel("Hall");
-    }
 }

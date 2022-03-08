@@ -40,11 +40,20 @@ public class ItemManager : MonoBehaviour
                 item.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("Item/实验室的掉落钥匙");
                 break;
         }
+        item.AddComponent<ItemDrag>().ItemName = s;
         ItemDic.Add(s, item);
     }
     public void RemoveItme(string s,int num =1)
     {
         if(s == "PaperTape")
+        {
+            if (ItemDic.ContainsKey(s))
+            {
+                Destroy(ItemDic[s]);
+                ItemDic.Remove(s);
+            }
+        }
+        if (s == "Key")
         {
             if (ItemDic.ContainsKey(s))
             {
