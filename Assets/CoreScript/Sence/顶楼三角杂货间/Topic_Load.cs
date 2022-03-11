@@ -39,11 +39,15 @@ public class Topic_Load : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (DragItemName == "Key")
+            transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = false;
         Stay = false;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (DragItemName == "Key")
+            transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = true;
         Stay = true;
     }
 }

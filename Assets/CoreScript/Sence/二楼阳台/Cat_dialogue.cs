@@ -76,8 +76,8 @@ public class Cat_dialogue : MonoBehaviour, IPointerDownHandler
         });
 
         DialogueContent = new string[9];
-        DialogueContent[0] = "里昂：噢，上帝，这里居然有只猫,你看它洁白的毛发，柔顺又有光泽，这让我想起了我的前女友...";
-        DialogueContent[1] = "猫咪：喵喵喵喵喵…喵喵！\n（在这里也太无聊了…陪我玩！）";
+        DialogueContent[0] = "里昂：？？？";//"里昂：噢，上帝，这里居然有只猫,你看它洁白的毛发，柔顺又有光泽，这让我想起了我的前女友...";
+        DialogueContent[1] = "猫咪：喵喵喵喵喵…喵喵！（在这里也太无聊了…陪我玩！）";
         DialogueContent[2] = "里昂：（这么突然？） 好吧，但是玩什么呢？";
         DialogueContent[3] = "猫咪：喵……喵喵喵！ （让本猫想想……就石头剪刀布吧！）";
         DialogueContent[4] = "猫咪：喵喵喵，喵喵 喵喵喵。 （赢了我，我就送你个小礼物）";

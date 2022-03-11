@@ -7,7 +7,7 @@ using Photon.Realtime;
 using System.Collections.Generic;
 
 /// <summary>
-/// 游戏全局管理类
+/// 负责角色的生成、角色交互的可视化
 /// </summary>
 namespace Com.MyCompany.MyGame
 {

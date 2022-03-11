@@ -6,6 +6,7 @@ public class SenceDataControl : Singleton<SenceDataControl>
 {
     #region 储藏室
     public bool RightDoor = false;
+    public bool BedroomDoor = false;
     #endregion
 
     #region 顶楼三角杂货间

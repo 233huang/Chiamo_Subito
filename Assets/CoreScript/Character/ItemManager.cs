@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ItemManager : MonoBehaviour
 {
     public GameObject Plane;
+    public GameObject BGPlane;
     public GameObject Item;
     public Dictionary<string, GameObject> ItemDic = new Dictionary<string, GameObject>();
     public static ItemManager instance = null;
@@ -18,9 +19,8 @@ public class ItemManager : MonoBehaviour
 
     public void AddItem(string s)
     {
-        if (Plane.GetComponent<Image>().enabled == false)
-            Plane.GetComponent<Image>().enabled = true;
-
+        BGPlane.SetActive(true);
+        Plane.GetComponent<Image>().enabled = true;
         GameObject item = Instantiate(Item, Plane.transform);
         switch (s)
         {
@@ -39,27 +39,19 @@ public class ItemManager : MonoBehaviour
             case "实验室的掉落钥匙":
                 item.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("Item/实验室的掉落钥匙");
                 break;
+            case "背包中的废纸团":
+                item.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("Item/背包中的废纸团");
+                break;
         }
         item.AddComponent<ItemDrag>().ItemName = s;
         ItemDic.Add(s, item);
     }
     public void RemoveItme(string s,int num =1)
     {
-        if(s == "PaperTape")
+        if (ItemDic.ContainsKey(s))
         {
-            if (ItemDic.ContainsKey(s))
-            {
-                Destroy(ItemDic[s]);
-                ItemDic.Remove(s);
-            }
-        }
-        if (s == "Key")
-        {
-            if (ItemDic.ContainsKey(s))
-            {
-                Destroy(ItemDic[s]);
-                ItemDic.Remove(s);
-            }
+            Destroy(ItemDic[s]);
+            ItemDic.Remove(s);
         }
     }
 }

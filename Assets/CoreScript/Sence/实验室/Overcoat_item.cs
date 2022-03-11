@@ -22,7 +22,6 @@ public class Overcoat_item : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E) && !Animationing)
             {
-                Debug.Log("x");
                 E.enabled = false;
                 Animationing = true;
                 index++;

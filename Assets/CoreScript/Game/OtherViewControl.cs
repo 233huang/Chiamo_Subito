@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,6 +7,8 @@ using UnityEngine.UI;
 /// <summary>
 /// 视角切换——相机/显示大物体
 /// </summary>
+
+[Obsolete("此方法已被弃用",true)]
 public class OtherViewControl : MonoBehaviour
 {
     public GameObject MainCamera;//主相机

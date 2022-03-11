@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 语音面板控制
+/// </summary>
 public class VoiceTime_Scrollbar : MonoBehaviour
 {
     public GameObject voiceTime;

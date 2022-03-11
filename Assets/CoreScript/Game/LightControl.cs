@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
+/// <summary>
+/// 灯光控制器
+/// </summary>
 public class LightControl : MonoBehaviour
 {
     public string lightname;

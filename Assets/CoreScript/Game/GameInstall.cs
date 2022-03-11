@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 游戏设置界面
+/// </summary>
 public class GameInstall : MonoBehaviour
 {
     public Scrollbar[] scrollbars;

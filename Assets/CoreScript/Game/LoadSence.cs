@@ -10,7 +10,7 @@ public class LoadSence : MonoBehaviour
 {
     private SpriteRenderer E;
     public SenceName senceName;
-    public enum SenceName { Hall, Level1, 顶楼三角杂货间, 二楼阳台 , 格瑞实验室 };
+    public enum SenceName { Hall, Level1, 顶楼三角杂货间, 二楼阳台 , 格瑞实验室 ,华森特房间 };
     public int entrance;
     private void Start()
     {
@@ -49,6 +49,7 @@ public class LoadSenceEidtor:Editor
         LoadSence script = target as LoadSence;
         script.senceName = (LoadSence.SenceName)EditorGUILayout.EnumPopup("SenceName:",
                script.senceName);
+        script.entrance = EditorGUILayout.IntField("entrance", script.entrance);
     }
 }
 

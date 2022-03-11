@@ -20,8 +20,8 @@ public class GetKey_item : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E))
         {
-            ItemManager.instance.AddItem("实验室的掉落钥匙");
             Destroy(this.gameObject);
+            ItemManager.instance.AddItem("实验室的掉落钥匙");
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
