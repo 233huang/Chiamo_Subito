@@ -11,6 +11,8 @@ public class ceshi : MonoBehaviour,IDragHandler
     private void Start()
     {
         text.onValueChanged.AddListener((s) => {
+            if (s == "0")
+                return;
             GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<PlayControl>().speed = int.Parse(s);
             });
     }
@@ -33,6 +35,14 @@ public class ceshi : MonoBehaviour,IDragHandler
     public void load5()
     {
         SenceLoadManager.instance.LoadSence("格瑞实验室", PlayerManager.instance.PlayerCreatVector["格瑞实验室"][0]);
+    }
+    public void load6()
+    {
+        SenceLoadManager.instance.LoadSence("华森特房间", PlayerManager.instance.PlayerCreatVector["华森特房间"][0]);
+    }
+    public void load7()
+    {
+        SenceLoadManager.instance.LoadSence("格瑞房间", PlayerManager.instance.PlayerCreatVector["格瑞房间"][0]);
     }
 
     public void OnDrag(PointerEventData eventData)

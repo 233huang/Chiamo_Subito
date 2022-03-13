@@ -28,7 +28,7 @@ public class Level1_LoadNext2 : MonoBehaviour,IPointerEnterHandler, IPointerExit
             transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = true;
             if (Input.GetKeyDown(KeyCode.E))
             {
-                SenceLoadManager.instance.LoadSence("格瑞实验室", PlayerManager.instance.PlayerCreatVector["格瑞实验室"][0]);
+                SenceLoadManager.instance.LoadSence("华森特房间", PlayerManager.instance.PlayerCreatVector["华森特房间"][0]);
             }
         }
     }
@@ -46,7 +46,6 @@ public class Level1_LoadNext2 : MonoBehaviour,IPointerEnterHandler, IPointerExit
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("我进来了！");
         if (DragItemName == "华钥匙")
             transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = true;
         Stay = true;
