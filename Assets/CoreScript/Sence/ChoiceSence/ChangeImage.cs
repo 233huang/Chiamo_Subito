@@ -1,23 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChangeImage : MonoBehaviour
 {
-    private SpriteRenderer image;
-    public Sprite sprite;
-    private Sprite oldsprite;
-    private GameObject child;
+    private Image image;
+    private Image oldimage;
+    private Image newimage;
 
-    private void Awake()
+    private void Start()
     {
-        image = this.gameObject.GetComponent<SpriteRenderer>();
-        oldsprite = image.sprite;
-        child = this.transform.GetChild(0).gameObject;
+        image = this.GetComponent<Image>();
+        oldimage = this.transform.GetChild(0).GetComponent<Image>();
+        newimage = this.transform.GetChild(1).GetComponent<Image>();
     }
-    public void chance(bool ischange)
+
+    public void SetSprite(bool isold)
     {
-         image.sprite = ischange?sprite:oldsprite;
-         child.GetComponent<SpriteRenderer>().enabled = ischange;
+        if (isold)
+        {
+            oldimage.enabled = true;
+            newimage.enabled = false;
+        }
+        else
+        {
+            oldimage.enabled = false;
+            newimage.enabled = true;
+        }
     }
 }

@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// 会触发动画的物体
-/// </summary>
-public class Animation_item : MonoBehaviour
+public class PictureAni_item : MonoBehaviour
 {
     public GameObject g;
     private Animator animator;
+    public 
 
     bool enter = false;
 

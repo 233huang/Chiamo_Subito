@@ -21,6 +21,7 @@ public class HuaSenTeDialogue : MonoBehaviour,IPointerClickHandler
         if(index == 7)
         {
             this.transform.parent.gameObject.SetActive(false);
+            PlayerManager.instance.SetLight_Item(1, false);
             index = 0;
         }else    
             ChangeDialog();

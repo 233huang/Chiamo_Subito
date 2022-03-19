@@ -45,6 +45,7 @@ MonoBehaviour:
   - SetLight
   - Role_synchron
   - SetPlayerSences
+  - LoadSenceAndDestoryPlayer
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

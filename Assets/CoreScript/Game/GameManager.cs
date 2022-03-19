@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
 using System.Collections.Generic;
+using UnityEngine.Experimental.Rendering.Universal;
 
 /// <summary>
 /// 负责角色的生成、角色交互的可视化
@@ -17,6 +18,7 @@ namespace Com.MyCompany.MyGame
 
         //public Vector3 tran;
         public Vector3 size;
+        public Light2D light2D;
 
         private PlayerManager playerManager;
 
@@ -29,6 +31,12 @@ namespace Com.MyCompany.MyGame
             
             if (CreatePlayer)
                 InstanticPlayer();
+
+            if (light2D != null)
+            {
+                playerManager.currentLight.light2d = light2D;
+                playerManager.currentLight.brl = light2D.intensity;
+            }
         }
         private void Update()
         {
@@ -44,25 +52,37 @@ namespace Com.MyCompany.MyGame
             }
         }
 
-        private void InstanticPlayer()
+        public void InstanticPlayer()
         {
             if (playerManager.CharacterID == 0)
             {
-                //GameObject player = PhotonNetwork.Instantiate("Player/LiAng", tran, Quaternion.identity, 0);
-                GameObject player = PhotonNetwork.Instantiate("Player/LiAng", 
+                GameObject player = GameObject.Find("LiAng(Clone)");
+                if (player == null)
+                {
+                    Debug.Log("第一次生成");
+                    player = PhotonNetwork.Instantiate("Player/LiAng",
                     playerManager.NextSenceVector,
                     Quaternion.identity, 0);
+                }
+
                 player.transform.localScale = size;
-                player.transform.SetParent(GameObject.Find("Game").transform);
+                player.transform.position = playerManager.NextSenceVector;
+                //player.transform.SetParent(GameObject.Find("Game").transform);
+
             }
             if (playerManager.CharacterID == 1)
             {
-                //GameObject player = PhotonNetwork.Instantiate("Player/LiLiAn", tran, Quaternion.identity, 0);
-                GameObject player = PhotonNetwork.Instantiate("Player/LiLiAn",
+                GameObject player = GameObject.Find("LiLiAn(Clone)");
+                if (player == null)
+                {
+                    player = PhotonNetwork.Instantiate("Player/LiLiAn",
                     playerManager.NextSenceVector,
                     Quaternion.identity, 0);
+                }
+
                 player.transform.localScale = size;
-                player.transform.SetParent(GameObject.Find("Game").transform);
+                player.transform.position = playerManager.NextSenceVector;
+                //player.transform.SetParent(GameObject.Find("Game").transform);
             }
             SetCameraMask();
         }

@@ -30,6 +30,7 @@ public class BluePageLog : MonoBehaviour,IPointerClickHandler
         if(index == 3)
         {
             this.gameObject.SetActive(false);
+            PlayerManager.instance.SetLight_Item(1, false);
         }
         else
         {

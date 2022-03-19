@@ -14,7 +14,8 @@ public class GameInstall : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(this);
-        QuitGame.onClick.AddListener(() => { Application.Quit(); });
+        QuitGame.onClick.AddListener(() => {
+            Application.Quit(); });
         //scrollbars[0].onValueChanged.AddListener();
     }
 }

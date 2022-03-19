@@ -133,6 +133,7 @@ public class Cat_dialogue : MonoBehaviour, IPointerDownHandler
             {
                 Destroy(this.transform.parent.gameObject);
                 ItemManager.instance.AddItem("华钥匙");
+                PlayerManager.instance.SetLight_Item(1, false);
                 Destroy(CatObject);
             }
         }

@@ -106,6 +106,8 @@ public class bottle_experiment : MonoBehaviour
             foreach(Image r in results)
             {
                 r.color = new Color(1, 1, 1, 0);
+                for(int i =5;i<=7;i++)
+                    notebook.transform.GetChild(i).gameObject.SetActive(false);
             }
         });
     }

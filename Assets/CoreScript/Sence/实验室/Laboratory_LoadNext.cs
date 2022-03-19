@@ -15,7 +15,7 @@ public class Laboratory_LoadNext : MonoBehaviour, IPointerEnterHandler, IPointer
     {
         if (DragItemName == "实验室的掉落钥匙" && Stay == true)
         {
-            SenceDataControl.instance.BedroomDoor = true;
+            SenceDataControl.instance.GeRuiRoom = true;
             ItemManager.instance.RemoveItme("实验室的掉落钥匙");
         }
         DragItemName = ItemName;
@@ -23,7 +23,7 @@ public class Laboratory_LoadNext : MonoBehaviour, IPointerEnterHandler, IPointer
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (SenceDataControl.instance.BedroomDoor)
+        if (SenceDataControl.instance.GeRuiRoom)
         {
             transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = true;
             if (Input.GetKeyDown(KeyCode.E))

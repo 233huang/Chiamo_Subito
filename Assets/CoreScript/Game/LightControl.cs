@@ -11,7 +11,7 @@ public class LightControl : MonoBehaviour
     public string lightname;
     private Light2D light2D;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         light2D = this.GetComponent<Light2D>();
         EventManger.instance.AddEventListener<string,float>("Light",SetLight,false);
@@ -23,5 +23,7 @@ public class LightControl : MonoBehaviour
         if (s != lightname)
             return;
         light2D.intensity = f;
+        PlayerManager.instance.currentLight.light2d = light2D;
+        PlayerManager.instance.currentLight.brl = light2D.intensity;
     }
 }

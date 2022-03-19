@@ -16,6 +16,15 @@ public class Delete_item : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if (SenceDataControl.instance.Painting)
+        {
+            this.gameObject.SetActive(false);
+            show.SetActive(true);
+        }
+    }
+
     private void Update()
     {
         if (del)
@@ -26,6 +35,7 @@ public class Delete_item : MonoBehaviour
             {
                 show.SetActive(true);
                 this.gameObject.SetActive(false);
+                SenceDataControl.instance.Painting = true;
             }
         }
     }

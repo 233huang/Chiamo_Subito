@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 射线检测类
+/// 射线检测类(弃用)
 /// </summary>
 public class ChinarRayCast : MonoBehaviour
-{
+{/*
     private bool isChoice = false;
 
     public ChangeImage liang;
@@ -38,8 +38,7 @@ public class ChinarRayCast : MonoBehaviour
                     {
                         PlayerManager.instance.CharacterID = 0;
                         isChoice = true;
-                        /*if (PlayerManager.instance.OtherCharacterID != -1)
-                            LoadNextScence();*/
+
                         PlayerManager.instance.gameObject.GetComponent<PhotonView>().RPC("OtherPlayerChoice", RpcTarget.All, 0);
                     }
                 }
@@ -55,8 +54,7 @@ public class ChinarRayCast : MonoBehaviour
                     {
                         PlayerManager.instance.CharacterID = 1;
                         isChoice = true;
-                        /*if (PlayerManager.instance.OtherCharacterID != -1)
-                            LoadNextScence();*/
+
                         PlayerManager.instance.gameObject.GetComponent<PhotonView>().RPC("OtherPlayerChoice", RpcTarget.All, 1);
                     }
                 }
@@ -76,16 +74,5 @@ public class ChinarRayCast : MonoBehaviour
         if (PlayerManager.instance.alreadyChocieCharacter[1])
             lilian.GetComponent<ChangeImage>().chance(true);
     }
-
-    /*void OtherPlayerChoice(int id)
-    {
-        if (id == 0)
-        {
-            liang.GetComponent<ChangeImage>().chance(true);
-        }
-        if (id == 1)
-        {
-            lilian.GetComponent<ChangeImage>().chance(true);
-        }
-    }*/
+    */
 }

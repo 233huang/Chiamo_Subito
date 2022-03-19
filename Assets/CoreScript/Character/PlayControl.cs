@@ -22,11 +22,18 @@ namespace Com.MyCompany.MyGame
         private void Awake()
         {
             EventManger.instance.AddEventListener<float>("Distortion", Distortion);
+            EventManger.instance.AddEventListener("PickUp", PickUp);
+            EventManger.instance.AddEventListener<int>("DestoryPlayer", DestoryPlayer);
 
             distortionFilter = this.transform.Find("Speaker").gameObject.GetComponent<AudioDistortionFilter>();
             animator = this.transform.Find("Sprite").GetComponent<Animator>();
 
             allowControl = new bool[10];
+        }
+
+        private void Start()
+        {
+            DontDestroyOnLoad(this.gameObject);
         }
 
         private void Update()
@@ -56,24 +63,38 @@ namespace Com.MyCompany.MyGame
             {
                 animator.SetBool("ismove", false);
             }
-            if (Input.GetKey(KeyCode.E))
-            {
-                EventManger.instance.TriggerEventListener("pickup");
-            }
             if (Input.GetKeyDown(KeyCode.Y))
             {
                 PlayVoiceManager.instance.SetTramsmit(!PlayVoiceManager.instance.Transmit);
             }
             #endregion
+
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                DontDestroyOnLoad(this);
+            }
         }
 
         private void Distortion(float f)
         {
             distortionFilter.distortionLevel = f;
         }
+
+        private void PickUp()
+        {
+            if(PlayerManager.instance.CharacterID == 0)
+                animator.Play("LiAng_PickUp");
+            if (PlayerManager.instance.CharacterID == 1)
+                animator.Play("LiLiAn_PickUp");
+        }
+
         private void ReverbFilter(int i)
         {
             reverbFilter.reverbPreset = (AudioReverbPreset)i;
+        }
+
+        private void DestoryPlayer(int id)
+        {
         }
     }
 }

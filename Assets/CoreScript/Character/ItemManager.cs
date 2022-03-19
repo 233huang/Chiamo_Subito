@@ -42,6 +42,9 @@ public class ItemManager : MonoBehaviour
             case "背包中的废纸团":
                 item.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("Item/背包中的废纸团");
                 break;
+            case "骰子":
+                item.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("Item/骰子");
+                break;
         }
         item.AddComponent<ItemDrag>().ItemName = s;
         ItemDic.Add(s, item);

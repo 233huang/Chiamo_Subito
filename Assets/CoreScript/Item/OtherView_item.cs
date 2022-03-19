@@ -8,6 +8,7 @@ using UnityEngine;
 public class OtherView_item : MonoBehaviour
 {
     public GameObject show;
+    public bool setBGback = true;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -15,6 +16,8 @@ public class OtherView_item : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             show.gameObject.SetActive(true);
+            if (setBGback)
+                PlayerManager.instance.SetLight_Item(0.4f, true);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
