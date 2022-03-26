@@ -44,11 +44,20 @@ public class ItemManager : MonoBehaviour
                 break;
             case "骰子":
                 item.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("Item/骰子");
+                item.transform.localScale = new Vector3(2, 2, 2);
                 break;
         }
         item.AddComponent<ItemDrag>().ItemName = s;
         ItemDic.Add(s, item);
     }
+
+    public bool ContainItem(string s)
+    {
+        if (ItemDic.ContainsKey(s))
+            return true;
+        return false;
+    }
+
     public void RemoveItme(string s,int num =1)
     {
         if (ItemDic.ContainsKey(s))

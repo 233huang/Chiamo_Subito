@@ -21,13 +21,16 @@ namespace Com.MyCompany.MyGame
         public Light2D light2D;
 
         private PlayerManager playerManager;
+        private string senceName;
 
         private void Start()
         {
             playerManager = PlayerManager.instance;
+            senceName = SceneManager.GetActiveScene().name;
+            PlayBGAudio();
 
             playerManager.GetComponent<PhotonView>().RPC("SetPlayerSences", RpcTarget.All,
-                playerManager.CharacterID, SceneManager.GetActiveScene().name);
+                playerManager.CharacterID, senceName);
             
             if (CreatePlayer)
                 InstanticPlayer();
@@ -102,6 +105,11 @@ namespace Com.MyCompany.MyGame
         public override void OnLeftRoom()
         {
             SceneManager.LoadScene(0);
+        }
+        
+        public void PlayBGAudio()
+        {
+            AudioManager.instance.PlayBGMusicWithSenceName(senceName);
         }
 
     }

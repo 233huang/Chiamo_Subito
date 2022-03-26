@@ -28,8 +28,9 @@ public class LoadSence : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKey(KeyCode.E))
         {
+            Destroy(this);
             load();
         }
     }

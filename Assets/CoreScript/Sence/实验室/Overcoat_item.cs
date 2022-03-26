@@ -28,15 +28,22 @@ public class Overcoat_item : MonoBehaviour
                 if (index < 4)
                     animator.Play("摇晃");
                 else
+                {
                     animator.SetBool("掉落", true);
+                    E.enabled = false;
+                    CanE = false;
+                }
+                    
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        E.enabled = true;
-        CanE = true;
+        if(index < 4) {
+            E.enabled = true;
+            CanE = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)

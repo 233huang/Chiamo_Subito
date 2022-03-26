@@ -48,4 +48,12 @@ public class TreasureChest : MonoBehaviour
             }
         }
     }
+
+    private void OnEnable()
+    {
+        for(int i =0;i<results.Length;i++)
+        {
+            results[i] = false;
+        }
+    }
 }

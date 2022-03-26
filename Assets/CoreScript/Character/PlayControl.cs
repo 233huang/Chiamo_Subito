@@ -86,6 +86,7 @@ namespace Com.MyCompany.MyGame
                 animator.Play("LiAng_PickUp");
             if (PlayerManager.instance.CharacterID == 1)
                 animator.Play("LiLiAn_PickUp");
+            AudioManager.instance.PlayUIAudio("Music/拾取");
         }
 
         private void ReverbFilter(int i)

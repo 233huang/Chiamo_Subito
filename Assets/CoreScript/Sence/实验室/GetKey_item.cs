@@ -5,6 +5,7 @@ using UnityEngine;
 public class GetKey_item : MonoBehaviour
 {
     private SpriteRenderer E;
+    public GameObject keyshow;
 
     private void Start()
     {
@@ -22,6 +23,7 @@ public class GetKey_item : MonoBehaviour
         {
             Destroy(this.gameObject);
             ItemManager.instance.AddItem("实验室的掉落钥匙");
+            keyshow.SetActive(true);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

@@ -12,6 +12,7 @@ public class VoiceTime_Scrollbar : MonoBehaviour
     public GameObject scrollbar;
     public Text text;
     public Sprite[] Yon;
+    public Animator animator;
 
     private Image imageY;
     private Scrollbar scr;
@@ -60,9 +61,12 @@ public class VoiceTime_Scrollbar : MonoBehaviour
                 voiceTime.SetActive(true);
             if (b)
             {
+                animator.enabled = true;
                 imageY.sprite = Yon[1];
+                
             }else
             {
+                animator.enabled = false;
                 imageY.sprite = Yon[0];
             }
         }

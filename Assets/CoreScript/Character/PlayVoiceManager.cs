@@ -39,6 +39,10 @@ public class PlayVoiceManager : Singleton<PlayVoiceManager>
         {
             Transmit = b;
         }
+        else
+        {
+            AudioManager.instance.PlayUIAudio("Music/薄片UI零个");
+        }
     }
 
     public void AddVoiceCount(int i)
