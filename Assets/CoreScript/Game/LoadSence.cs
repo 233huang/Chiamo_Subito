@@ -10,7 +10,7 @@ public class LoadSence : MonoBehaviour
 {
     private SpriteRenderer E;
     public SenceName senceName;
-    public enum SenceName { Hall, Level1, 顶楼三角杂货间, 二楼阳台 , 格瑞实验室 ,华森特房间 };
+    public enum SenceName { Hall, Level1, 顶楼三角杂货间, 二楼阳台, 格瑞实验室, 华森特房间, 格瑞房间, 三楼浴室 };
     public int entrance;
     private void Start()
     {
@@ -31,6 +31,7 @@ public class LoadSence : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             Destroy(this);
+            AudioManager.instance.PlayUIAudio("Music/开门");
             load();
         }
     }

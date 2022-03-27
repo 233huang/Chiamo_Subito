@@ -12,18 +12,17 @@ namespace Com.MyCompany.MyGame
     {
         [SerializeField]
         public float speed = 4f;
-        [SerializeField]
         private AudioDistortionFilter distortionFilter;
-        private AudioReverbFilter reverbFilter;
-        [SerializeField]
         private Animator animator;
 
+        public AudioReverbFilter reverbFilter;
         public bool[] allowControl;
         private void Awake()
         {
             EventManger.instance.AddEventListener<float>("Distortion", Distortion);
             EventManger.instance.AddEventListener("PickUp", PickUp);
             EventManger.instance.AddEventListener<int>("DestoryPlayer", DestoryPlayer);
+            EventManger.instance.AddEventListener<bool>("混响男孩", ReverbFilter);
 
             distortionFilter = this.transform.Find("Speaker").gameObject.GetComponent<AudioDistortionFilter>();
             animator = this.transform.Find("Sprite").GetComponent<Animator>();
@@ -82,16 +81,16 @@ namespace Com.MyCompany.MyGame
 
         private void PickUp()
         {
-            if(PlayerManager.instance.CharacterID == 0)
+            if (PlayerManager.instance.CharacterID == 0)
                 animator.Play("LiAng_PickUp");
             if (PlayerManager.instance.CharacterID == 1)
                 animator.Play("LiLiAn_PickUp");
             AudioManager.instance.PlayUIAudio("Music/拾取");
         }
 
-        private void ReverbFilter(int i)
+        private void ReverbFilter(bool b)
         {
-            reverbFilter.reverbPreset = (AudioReverbPreset)i;
+            reverbFilter.enabled = b;
         }
 
         private void DestoryPlayer(int id)

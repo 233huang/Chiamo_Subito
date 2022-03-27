@@ -246,7 +246,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &47065234
 Animator:
   serializedVersion: 3
@@ -255,7 +255,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47065233}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: b5737f2681a1c4e419c0e4f66fbe938f, type: 2}
   m_CullingMode: 0
@@ -716,11 +716,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068d755421581624992e05aa7f827efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollbars:
-  - {fileID: 1967702261}
-  - {fileID: 2044688568}
-  - {fileID: 403557929}
-  - {fileID: 1687220872}
+  bgScr: {fileID: 1967702261}
+  uiScr: {fileID: 2044688568}
   QuitGame: {fileID: 1826735900}
 --- !u!1 &116900760
 GameObject:
@@ -1058,6 +1055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ce775cbb67a7b44a3aa7395abf488f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioName: "UI\u901A\u7528"
 --- !u!1 &209114501
 GameObject:
   m_ObjectHideFlags: 0
@@ -1639,7 +1637,7 @@ GameObject:
   - component: {fileID: 403557930}
   - component: {fileID: 403557929}
   m_Layer: 5
-  m_Name: Scrollbar (2)
+  m_Name: Scr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1662,7 +1660,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 195, y: -226.9}
+  m_AnchoredPosition: {x: 163, y: -221.9}
   m_SizeDelta: {x: 290, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &403557929
@@ -1893,6 +1891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ce775cbb67a7b44a3aa7395abf488f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioName: "UI\u901A\u7528"
 --- !u!1 &411573247
 GameObject:
   m_ObjectHideFlags: 0
@@ -2383,7 +2382,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 508244965}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.25, y: 2.3999996, z: -16}
+  m_LocalPosition: {x: -2.2499995, y: 2.3999996, z: -16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1831558770}
@@ -3126,6 +3125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ce775cbb67a7b44a3aa7395abf488f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioName: "UI\u901A\u7528"
 --- !u!1 &660813821
 GameObject:
   m_ObjectHideFlags: 0
@@ -3347,6 +3347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ce775cbb67a7b44a3aa7395abf488f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioName: "UI\u901A\u7528"
 --- !u!1 &668553615
 GameObject:
   m_ObjectHideFlags: 0
@@ -3676,7 +3677,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -25, y: -25}
+  m_AnchoredPosition: {x: -57, y: -20}
   m_SizeDelta: {x: 381, y: 554}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &832049721
@@ -3882,6 +3883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ce775cbb67a7b44a3aa7395abf488f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioName: "UI\u901A\u7528"
 --- !u!1 &865511351
 GameObject:
   m_ObjectHideFlags: 0
@@ -4098,6 +4100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ce775cbb67a7b44a3aa7395abf488f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioName: "UI\u901A\u7528"
 --- !u!1 &873993992
 GameObject:
   m_ObjectHideFlags: 0
@@ -4871,6 +4874,11 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 1110608127858979569, guid: de68982f80350ac4a8992096ae8f87ff,
+        type: 3}
+      propertyPath: id
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 1110608127858979572, guid: de68982f80350ac4a8992096ae8f87ff,
         type: 3}
       propertyPath: m_Name
@@ -5395,6 +5403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ce775cbb67a7b44a3aa7395abf488f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioName: "UI\u901A\u7528"
 --- !u!1 &1155897086
 GameObject:
   m_ObjectHideFlags: 0
@@ -5677,6 +5686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ce775cbb67a7b44a3aa7395abf488f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioName: "UI\u901A\u7528"
 --- !u!1 &1186527151
 GameObject:
   m_ObjectHideFlags: 3
@@ -6193,6 +6203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ce775cbb67a7b44a3aa7395abf488f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioName: "UI\u901A\u7528"
 --- !u!1 &1290277777
 GameObject:
   m_ObjectHideFlags: 0
@@ -6414,6 +6425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ce775cbb67a7b44a3aa7395abf488f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioName: "UI\u901A\u7528"
 --- !u!1 &1299059106
 GameObject:
   m_ObjectHideFlags: 0
@@ -6740,7 +6752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1353457115
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6876,6 +6888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ce775cbb67a7b44a3aa7395abf488f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioName: "UI\u901A\u7528"
 --- !u!1 &1353835805
 GameObject:
   m_ObjectHideFlags: 0
@@ -7152,6 +7165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ce775cbb67a7b44a3aa7395abf488f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioName: "UI\u901A\u7528"
 --- !u!1 &1370267273
 GameObject:
   m_ObjectHideFlags: 0
@@ -7170,7 +7184,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1370267274
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7299,7 +7313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 95630d59de07ab94e85c69ea2ead3b08, type: 2}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
@@ -7483,6 +7497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ce775cbb67a7b44a3aa7395abf488f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioName: "UI\u901A\u7528"
 --- !u!1 &1432883665
 GameObject:
   m_ObjectHideFlags: 0
@@ -7764,6 +7779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ce775cbb67a7b44a3aa7395abf488f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioName: "UI\u901A\u7528"
 --- !u!1 &1452285714
 GameObject:
   m_ObjectHideFlags: 0
@@ -8365,6 +8381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ce775cbb67a7b44a3aa7395abf488f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioName: "UI\u901A\u7528"
 --- !u!1 &1540697166
 GameObject:
   m_ObjectHideFlags: 0
@@ -8548,8 +8565,8 @@ RectTransform:
   m_Father: {fileID: 501529915}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.9, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.45, y: 0}
+  m_AnchorMax: {x: 0.55, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8877,7 +8894,7 @@ GameObject:
   - component: {fileID: 1687220873}
   - component: {fileID: 1687220872}
   m_Layer: 5
-  m_Name: Scrollbar (3)
+  m_Name: Scr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8900,7 +8917,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 195, y: -283.8}
+  m_AnchoredPosition: {x: 163, y: -278.8}
   m_SizeDelta: {x: 290, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1687220872
@@ -9208,7 +9225,7 @@ MonoBehaviour:
   Yon:
   - {fileID: 21300000, guid: de42e85daa2d2b84c8b599bb0f5d95ea, type: 3}
   - {fileID: 21300000, guid: c7cc08eb82e826f48be1ef6af32ab2e0, type: 3}
-  animator: {fileID: 47065234}
+  speak: {fileID: 47065233}
 --- !u!1 &1709493180
 GameObject:
   m_ObjectHideFlags: 0
@@ -9916,7 +9933,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000022888184, y: -450}
+  m_AnchoredPosition: {x: 0, y: -452}
   m_SizeDelta: {x: 231.51523, y: 80.87013}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1826735904
@@ -9931,6 +9948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ce775cbb67a7b44a3aa7395abf488f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioName: "UI\u901A\u7528"
 --- !u!1 &1831558769
 GameObject:
   m_ObjectHideFlags: 0
@@ -10108,6 +10126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ce775cbb67a7b44a3aa7395abf488f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioName: "UI\u901A\u7528"
 --- !u!1 &1896041964
 GameObject:
   m_ObjectHideFlags: 0
@@ -10472,6 +10491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ce775cbb67a7b44a3aa7395abf488f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioName: "UI\u901A\u7528"
 --- !u!1 &1927386468
 GameObject:
   m_ObjectHideFlags: 0
@@ -10722,7 +10742,7 @@ GameObject:
   - component: {fileID: 1967702262}
   - component: {fileID: 1967702261}
   m_Layer: 5
-  m_Name: Scrollbar
+  m_Name: BGScr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10745,7 +10765,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 195, y: -100}
+  m_AnchoredPosition: {x: 163, y: -95}
   m_SizeDelta: {x: 290, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1967702261
@@ -10790,7 +10810,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1542032018}
   m_HandleRect: {fileID: 1542032017}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0.5
   m_Size: 0.1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -11214,7 +11234,7 @@ GameObject:
   - component: {fileID: 2044688569}
   - component: {fileID: 2044688568}
   m_Layer: 5
-  m_Name: Scrollbar (1)
+  m_Name: UIScr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11237,7 +11257,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 195, y: -164.7}
+  m_AnchoredPosition: {x: 163, y: -159.7}
   m_SizeDelta: {x: 290, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2044688568
@@ -11652,6 +11672,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1110608127858979569, guid: de68982f80350ac4a8992096ae8f87ff,
+        type: 3}
+      propertyPath: id
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1110608127858979572, guid: de68982f80350ac4a8992096ae8f87ff,
         type: 3}

@@ -36,6 +36,7 @@ public class Laboratory_LoadNext : MonoBehaviour, IPointerEnterHandler, IPointer
             transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = true;
             if (Input.GetKeyDown(KeyCode.E))
             {
+                AudioManager.instance.PlayUIAudio("Music/开门");
                 SenceLoadManager.instance.LoadSence("格瑞房间", PlayerManager.instance.PlayerCreatVector["格瑞房间"][0]);
             }
         }

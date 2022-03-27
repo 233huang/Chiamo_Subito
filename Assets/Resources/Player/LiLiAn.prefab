@@ -183,20 +183,20 @@ AudioReverbFilter:
   m_GameObject: {fileID: 1504733920431720258}
   m_Enabled: 0
   m_DryLevel: 0
-  m_Room: 0
-  m_RoomHF: 0
-  m_DecayTime: 1
-  m_DecayHFRatio: 0.5
-  m_ReflectionsLevel: -10000
-  m_ReverbLevel: 0
-  m_ReverbDelay: 0.04
+  m_Room: -1000
+  m_RoomHF: -1200
+  m_DecayTime: 1.49
+  m_DecayHFRatio: 0.54
+  m_ReflectionsLevel: -370
+  m_ReverbLevel: 1030
+  m_ReverbDelay: 0.011
   m_Diffusion: 100
-  m_Density: 100
+  m_Density: 60
   m_HFReference: 5000
   m_RoomLF: 0
   m_LFReference: 250
   m_ReflectionsDelay: 0
-  m_ReverbPreset: 27
+  m_ReverbPreset: 4
 --- !u!1 &1504733920634657386
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,8 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4.5
-  distortionFilter: {fileID: 0}
-  animator: {fileID: 0}
+  reverbFilter: {fileID: 5092935200610675003}
   allowControl: 
 --- !u!114 &2249013943668133729
 MonoBehaviour:

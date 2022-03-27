@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -809,7 +809,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -8.9651375, y: -0.08440256}
+  m_Offset: {x: -8.732143, y: -0.08440256}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -820,7 +820,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9584007, y: 9.834277}
+  m_Size: {x: 1.4243898, y: 9.834277}
   m_EdgeRadius: 0
 --- !u!1 &488289255
 GameObject:
@@ -1052,6 +1052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ce775cbb67a7b44a3aa7395abf488f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioName: "UI\u901A\u7528"
 --- !u!1 &575333437
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,6 +1464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ce775cbb67a7b44a3aa7395abf488f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioName: "UI\u901A\u7528"
 --- !u!1 &650967879
 GameObject:
   m_ObjectHideFlags: 0
@@ -2720,6 +2722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ce775cbb67a7b44a3aa7395abf488f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioName: "UI\u901A\u7528"
 --- !u!1 &1104515249
 GameObject:
   m_ObjectHideFlags: 0
@@ -3445,6 +3448,7 @@ GameObject:
   - component: {fileID: 1545299668}
   - component: {fileID: 1545299671}
   - component: {fileID: 1545299670}
+  - component: {fileID: 1545299672}
   m_Layer: 0
   m_Name: "\u732B\u54AA0002"
   m_TagString: Untagged
@@ -3460,7 +3464,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545299666}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.36, y: 0.33333334, z: 0}
+  m_LocalPosition: {x: 0.27, y: 0.33333334, z: 0}
   m_LocalScale: {x: 0.95238096, y: 0.952381, z: 1}
   m_Children:
   - {fileID: 898704076}
@@ -3576,6 +3580,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.0086136, y: 4.8689866}
   m_EdgeRadius: 0
+--- !u!114 &1545299672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545299666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d2168ccb9d9df348b8b49ec076b5622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioName: "\u732B\u54AA"
 --- !u!1 &1607272033
 GameObject:
   m_ObjectHideFlags: 0

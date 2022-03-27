@@ -67,6 +67,7 @@ public class Interlude : MonoBehaviour,IPointerClickHandler
             SetFllow(roles[5 + PlayerManager.instance.CharacterID]);
             course.SetActive(true);
             Destroy(this.transform.parent.gameObject);
+            light2D.intensity = 1;
             return;
         }
 

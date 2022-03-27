@@ -25,6 +25,7 @@ public class Overcoat_item : MonoBehaviour
                 E.enabled = false;
                 Animationing = true;
                 index++;
+                AudioManager.instance.PlayUIAudio("Music/大衣");
                 if (index < 4)
                     animator.Play("摇晃");
                 else

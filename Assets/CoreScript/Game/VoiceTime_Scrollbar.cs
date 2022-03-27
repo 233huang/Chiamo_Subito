@@ -12,7 +12,7 @@ public class VoiceTime_Scrollbar : MonoBehaviour
     public GameObject scrollbar;
     public Text text;
     public Sprite[] Yon;
-    public Animator animator;
+    public GameObject speak;
 
     private Image imageY;
     private Scrollbar scr;
@@ -47,7 +47,8 @@ public class VoiceTime_Scrollbar : MonoBehaviour
                     PlayVoiceManager.instance.Transmit = false;
                     PlayVoiceManager.instance.SetVoiceTime(0f);
                     imageY.enabled = false;
-                    scrollbar.SetActive(false);
+                    PlayVoiceManager.instance.VoiceTime = 0;
+                    //scrollbar.SetActive(false);
                 }
             }
         }
@@ -61,14 +62,19 @@ public class VoiceTime_Scrollbar : MonoBehaviour
                 voiceTime.SetActive(true);
             if (b)
             {
-                animator.enabled = true;
+                speak.SetActive(true);
                 imageY.sprite = Yon[1];
                 
             }else
             {
-                animator.enabled = false;
+                speak.SetActive(false);
                 imageY.sprite = Yon[0];
             }
+        }
+        else
+        {
+            speak.SetActive(false);
+            imageY.sprite = Yon[0];
         }
     }
 
@@ -77,5 +83,11 @@ public class VoiceTime_Scrollbar : MonoBehaviour
         text.text = PlayVoiceManager.instance.VoiceCount.ToString();
         if (!voiceTime.activeSelf)
             voiceTime.SetActive(true);
+
+        if(PlayVoiceManager.instance.VoiceCount == 1)
+        {
+            PlayVoiceManager.instance.VoiceTime = 120f;
+        }
+
     }
 }

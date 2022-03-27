@@ -10,6 +10,11 @@ public class OtherView_item : MonoBehaviour
     public GameObject show;
     public bool setBGback = true;
 
+    private void Start()
+    {
+        
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = true;

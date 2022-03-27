@@ -38,6 +38,7 @@ public class PlayVoiceManager : Singleton<PlayVoiceManager>
         if (VoiceCount > 0)
         {
             Transmit = b;
+            AudioManager.instance.PlayUIAudio("Music/UI通用");
         }
         else
         {

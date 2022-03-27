@@ -10,6 +10,8 @@ public class Electric_boxManager : Singleton<Electric_boxManager>
         set {
             work = value;
             EventManger.instance.TriggerEventListener<bool>("Box_Work", work);
+            if(value == true)
+                AudioManager.instance.PlayUIAudio("Music/模块开启");
         }
     }
 
@@ -20,7 +22,9 @@ public class Electric_boxManager : Singleton<Electric_boxManager>
         set
         {
             modularOne = value;
-            EventManger.instance.TriggerEventListener<bool>("Box_One", value); 
+            EventManger.instance.TriggerEventListener<bool>("Box_One", value);
+            if (value == true)
+                AudioManager.instance.PlayUIAudio("Music/模块开启");
         }
     }
 
@@ -32,6 +36,8 @@ public class Electric_boxManager : Singleton<Electric_boxManager>
         {
             modularTwo = value;
             EventManger.instance.TriggerEventListener<bool>("Box_Two", value);
+            if (value == true)
+                AudioManager.instance.PlayUIAudio("Music/模块开启");
         }
     }
 
@@ -43,6 +49,8 @@ public class Electric_boxManager : Singleton<Electric_boxManager>
         {
             modularThree = value;
             EventManger.instance.TriggerEventListener<bool>("Box_Three", value);
+            if (value == true)
+                AudioManager.instance.PlayUIAudio("Music/模块开启");
         }
     }
 
@@ -54,6 +62,8 @@ public class Electric_boxManager : Singleton<Electric_boxManager>
         {
             modularFour = value;
             EventManger.instance.TriggerEventListener<bool>("Box_Four", value);
+            if (value == true)
+                AudioManager.instance.PlayUIAudio("Music/模块开启");
         }
     }
 }

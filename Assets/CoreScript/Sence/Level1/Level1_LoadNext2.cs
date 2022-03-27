@@ -36,6 +36,7 @@ public class Level1_LoadNext2 : MonoBehaviour,IPointerEnterHandler, IPointerExit
             transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = true;
             if (Input.GetKeyDown(KeyCode.E))
             {
+                AudioManager.instance.PlayUIAudio("Music/开门");
                 SenceLoadManager.instance.LoadSence("华森特房间", PlayerManager.instance.PlayerCreatVector["华森特房间"][0]);
             }
         }

@@ -29,6 +29,7 @@ public class Modular_Five : MonoBehaviour
         {
             if(Electric_boxManager.instance.ModularFour)
             {
+                AudioManager.instance.PlayUIAudio("Music/配电箱开启");
                 PlayerManager.instance.GetComponent<PhotonView>().RPC("SetLight", RpcTarget.All, "level1", 1f);
                 PlayerManager.instance.GetComponent<PhotonView>().RPC("SetLight", RpcTarget.All, "杂货间", 1f);
             }

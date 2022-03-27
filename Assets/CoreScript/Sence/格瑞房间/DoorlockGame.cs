@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DoorlockGame : MonoBehaviour
 {
+    public GameObject qianjinmen;
     private int index=0;
     public RectTransform point;
     public Image lockstatus;
@@ -13,7 +14,10 @@ public class DoorlockGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(point.anchoredPosition.x);
+        if (SenceDataControl.instance.Lock)
+        {
+            SetLoad();
+        }
     }
 
     // Update is called once per frame
@@ -30,14 +34,26 @@ public class DoorlockGame : MonoBehaviour
             {
                 if (index < 2)
                 {
+                    AudioManager.instance.PlayUIAudio("Music/门锁撞击");
                     lockstatus.sprite = result[index];
                     index++;
                 }else if(index== 2)
                 {
+                    AudioManager.instance.PlayUIAudio("Music/门锁撞开");
                     this.transform.parent.parent.GetChild(1).gameObject.SetActive(true);
                     this.transform.parent.gameObject.SetActive(false);
+                    SenceDataControl.instance.Lock = true;
+                    SetLoad();
                 }
             }
         }
+    }
+
+    void SetLoad()
+    {
+        Destroy(qianjinmen.GetComponent<OtherView_item>());
+        LoadSence load = qianjinmen.AddComponent<LoadSence>();
+        load.senceName = LoadSence.SenceName.三楼浴室;
+        load.entrance = 1;
     }
 }

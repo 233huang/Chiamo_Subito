@@ -8,7 +8,8 @@ using UnityEngine.UI;
 /// </summary>
 public class GameInstall : MonoBehaviour
 {
-    public Scrollbar[] scrollbars;
+    public Scrollbar bgScr;
+    public Scrollbar uiScr;
     public Button QuitGame;
 
     void Start()
@@ -16,6 +17,15 @@ public class GameInstall : MonoBehaviour
         DontDestroyOnLoad(this);
         QuitGame.onClick.AddListener(() => {
             Application.Quit(); });
-        //scrollbars[0].onValueChanged.AddListener();
+
+        bgScr.onValueChanged.AddListener((f) =>
+        {
+            AudioManager.instance.SetBGAudioVolume(f);
+        });
+
+        uiScr.onValueChanged.AddListener((f) =>
+        {
+            AudioManager.instance.SetUIAduioVolume(f);
+        });
     }
 }

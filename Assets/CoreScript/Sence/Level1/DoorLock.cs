@@ -27,6 +27,7 @@ public class DoorLock : MonoBehaviour
             {
                 isok = false;
                 SenceDataControl.instance.RightDoor = true;
+                AudioManager.instance.PlayUIAudio("Music/门锁开启");
                 Destroy(Door.GetComponent<OtherView_item>());
                 Door.AddComponent<Level1_LoadNext>();
             }    

@@ -19,8 +19,18 @@ public class SenceLoadManager : Singleton<SenceLoadManager>
     {
         playerManager.GetComponent<PhotonView>().RPC("LoadSenceAndDestoryPlayer", RpcTarget.All,
                playerManager.CharacterID);
+        
+        HunXiaoHandle(name);
 
         playerManager.NextSenceVector = position;
         Photon.Pun.PhotonNetwork.LoadLevel(name);
+    }
+
+    public void HunXiaoHandle(string name)
+    {
+        if (name == "三楼浴室")
+            EventManger.instance.TriggerEventListener<bool>("混响男孩", true);
+        if(SceneManager.GetActiveScene().name == "三楼浴室")
+            EventManger.instance.TriggerEventListener<bool>("混响男孩", false);
     }
 }

@@ -20,6 +20,7 @@ public class Clock : MonoBehaviour
         {
             if (0.37<min.rotation.z &&min.rotation.z< 0.43)
             {
+                AudioManager.instance.PlayUIAudio("Music/时钟");
                 NOTE.SetActive(true);
                 Destroy(this);
             }

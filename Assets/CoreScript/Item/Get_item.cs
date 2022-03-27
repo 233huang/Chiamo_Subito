@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Get_item : MonoBehaviour
 {
+    private void Start()
+    {
+        if(itemname == "背包中的废纸团")
+            if (SenceDataControl.instance.Paperball)
+                Destroy(this.gameObject);
+    }
+
+
     public string itemname;
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -13,6 +21,8 @@ public class Get_item : MonoBehaviour
         {
             Destroy(this.gameObject);
             ItemManager.instance.AddItem(itemname);
+            if (itemname == "背包中的废纸团")
+                SenceDataControl.instance.Paperball = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

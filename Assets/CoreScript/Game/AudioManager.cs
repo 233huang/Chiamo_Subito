@@ -22,7 +22,7 @@ public class AudioManager : MonoBehaviour
         audioPathDic.Add("通用", "Music/（主bgm-其余场景都用这个）Big Eyes");
         audioPathDic.Add("二楼阳台", "Music/（二楼阳台）Connecting Rainbows");
         audioPathDic.Add("华森特房间", "Music/（华森特房间）Painful Disorientation");
-        audioPathDic.Add("浴室", "Music/（浴室）Kalimba Relaxation Music");
+        audioPathDic.Add("三楼浴室", "Music/（浴室）Kalimba Relaxation Music");
         audioPathDic.Add("结束", "Music/（结束）Painting Room");
     }
 
@@ -46,10 +46,11 @@ public class AudioManager : MonoBehaviour
             PlayBGMusic(audioPathDic["通用"], true);
     }
 
-    public void PlayUIAudio(string name)
+    public void PlayUIAudio(string name, bool isLoop = false)
     {
         AudioClip audio = LoadAudio(name, true);
         uiAudio.clip = audio;
+        uiAudio.loop = isLoop;
         uiAudio.Play();
     }
 
@@ -66,5 +67,15 @@ public class AudioManager : MonoBehaviour
             }
         }
         return au;
+    }
+
+    public void SetUIAduioVolume(float f)
+    {
+        uiAudio.volume = f;
+    }
+
+    public void SetBGAudioVolume(float f)
+    {
+        bgAudio.volume = f;
     }
 }
